@@ -56,7 +56,6 @@ export const TopHeader = () => {
       <div className="flex items-center space-x-8">
         <ConnectWallet 
           className={`${isConnected ? 'border-none bg-black-main' : 'p-2'}`} 
-          supportedWallets = {'Safe'}
         />
       </div>
     </TopHeaderView>
