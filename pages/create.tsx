@@ -3,6 +3,9 @@ import { Box, Button, TextField } from "@mui/material";
 import { NextPage } from "next";
 import React, { useState } from "react";
 import { TopHeader } from "../components";
+import { Ethereum, Goerli, Binance, Arbitrum } from '@thirdweb-dev/chains'
+import { ThirdwebProvider, safeWallet, metamaskWallet, walletConnect, coinbaseWallet } from '@thirdweb-dev/react'
+
 
 const Create: NextPage = () => {
   //토큰 속성 값 저장
@@ -26,7 +29,20 @@ const Create: NextPage = () => {
 
   return (
     <div>
-      <TopHeader />
+      <ThirdwebProvider
+        supportedChains={[Ethereum, Goerli, Binance, Arbitrum]}
+        supportedWallets={[
+          metamaskWallet(),
+          walletConnect(),
+          coinbaseWallet(),
+          safeWallet({
+            recommended: true,
+            personalWallets: [metamaskWallet(), walletConnect(), coinbaseWallet()]
+          })
+        ]}
+        >
+          <TopHeader />
+      </ThirdwebProvider>
       <CreatePageWrapper>
         <CreateView>
           <Title>Create New Item</Title>

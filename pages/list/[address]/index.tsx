@@ -5,6 +5,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { TopHeader } from "../../../components";
 import { useNftContract, useNfts } from "../../../hooks";
+import { Ethereum, Goerli, Binance, Arbitrum } from '@thirdweb-dev/chains'
+import { ThirdwebProvider, safeWallet, metamaskWallet, walletConnect, coinbaseWallet } from '@thirdweb-dev/react'
+
 
 const List: NextPage = () => {
   //router로 지갑 주소 가져오기
@@ -17,8 +20,20 @@ const List: NextPage = () => {
 
   return (
     <div>
-      <TopHeader />
-
+      <ThirdwebProvider
+        supportedChains={[Ethereum, Goerli, Binance, Arbitrum]}
+        supportedWallets={[
+          metamaskWallet(),
+          walletConnect(),
+          coinbaseWallet(),
+          safeWallet({
+            recommended: true,
+            personalWallets: [metamaskWallet(), walletConnect(), coinbaseWallet()]
+          })
+        ]}
+        >
+          <TopHeader />
+      </ThirdwebProvider>
       <Container>
         {/* 컨트랙트 있을시 컨트랙트 정보 랜더링 */}
         {contract && (

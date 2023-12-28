@@ -26,6 +26,11 @@ import {
 } from "../../../hooks";
 import { useOrder } from "../../../hooks/useOrder";
 
+import { Ethereum, Goerli, Binance, Arbitrum } from '@thirdweb-dev/chains'
+import { ThirdwebProvider, safeWallet, metamaskWallet, walletConnect, coinbaseWallet } from '@thirdweb-dev/react'
+
+
+
 const TokenDetailPage: NextPage = () => {
   //url에서 컨트렉트 주소와 토큰 아이디 가져오기
   const router = useRouter();
@@ -87,8 +92,20 @@ const TokenDetailPage: NextPage = () => {
 
   return (
     <div>
-      <TopHeader />
-
+      <ThirdwebProvider
+        supportedChains={[Ethereum, Goerli, Binance, Arbitrum]}
+        supportedWallets={[
+          metamaskWallet(),
+          walletConnect(),
+          coinbaseWallet(),
+          safeWallet({
+            recommended: true,
+            personalWallets: [metamaskWallet(), walletConnect(), coinbaseWallet()]
+          })
+        ]}
+        >
+          <TopHeader />
+      </ThirdwebProvider>
       {/* nft가 있을때만 보여주기 */}
       {nft && (
         <Container>
