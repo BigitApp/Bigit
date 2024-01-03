@@ -34,5 +34,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-package-lock.json
-yarn.lock
+dev
+
+.vscode
+.idea
+
+# docker-compose env files
+.env
+
+*.key
+*.key.pub
+# Sentry Config File
+.sentryclirc
