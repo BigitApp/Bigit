@@ -1,10 +1,13 @@
+"use client"
+import React, { useEffect } from 'react';
 import { Analytics } from "@vercel/analytics/react";
-import Head from 'next/head';
-
 import { Home } from "../components/home";
 
 
-export default async function App() {
+export default async function myBot() {
+  useEffect(() => {
+    document.title = "Bigit丨MyBot";
+  }, []);
   return (
     <>
       <Home />
