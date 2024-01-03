@@ -8,7 +8,6 @@ import { NavLink } from './NavLink'
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import { ConnectWallet, useConnectionStatus } from '@thirdweb-dev/react'
-import { Button } from "@/app/components/ui/button";
 
 import logo from '../../public/logo.png'
 
