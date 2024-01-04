@@ -13,7 +13,7 @@ export const NavLink = ({
       <Link
         href={href}
         target={target || '_self'}
-        className="font-bold inline-block rounded-lg py-1 px-2 text-xl text-white hover:bg-green-900 hover:text-white" // 修改了 CSS 类
+        className="font-bai-jamjuree font-bold inline-block rounded-lg py-1 px-2 text-xl text-white hover:bg-green-900 hover:text-white" // 修改了 CSS 类
       >
         {children}
       </Link>
