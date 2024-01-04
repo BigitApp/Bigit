@@ -34,7 +34,7 @@ export default function Footer() {
                         <h6 className="text-green-600 text-xl font-bold mb-2">Dapps</h6>
                         <ul className="text-base">
                             <li className="mb-2">
-                                <a href="https:/bigit.site" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Bigit</a>
+                                <a href="https:/bigitapp.com" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Bigit</a>
                             </li>
                         </ul>
                     </div>
@@ -44,10 +44,10 @@ export default function Footer() {
                         <h6 className="text-green-600 text-xl font-bold mb-2">Resources</h6>
                         <ul className="text-base">
                             <li className="mb-2">
-                                <a href="https:/docs.bigit.site" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Docs</a>
+                                <a href="https:/docs.bigitapp.com" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Docs</a>
                             </li>
                             <li className="mb-2">
-                                <a href="mailto:support@bigit.site" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Support</a>
+                                <a href="mailto:support@bigitapp.com" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Support</a>
                             </li>
                             <li className="mb-2">
                                 <a href="https:/aowang66.cn" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">News</a>
@@ -79,7 +79,7 @@ export default function Footer() {
                         <h6 className="text-green-600 text-xl font-bold mb-2">General</h6>
                         <ul className="text-base">
                             <li className="mb-2">
-                                <a href="mailto:support@bigit.site" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Contact Us</a>
+                                <a href="mailto:support@bigitapp.com" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Contact Us</a>
                             </li>
                         </ul>
                     </div>

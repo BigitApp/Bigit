@@ -10,6 +10,7 @@ import Image from 'next/image'
 import { ConnectWallet, useConnectionStatus } from '@thirdweb-dev/react'
 
 import logo from '../../public/logo.png'
+import logo2 from '../../public/logo2.png'
 
 function MobileNavLink({
   href,
@@ -143,18 +144,19 @@ export function Header() {
               <Image className="align-middle"
               priority
               alt="logo" 
-              src={logo} 
-              width={50}
-              height={50}
+              src={logo2} 
+              width={120}
+              height={40}
               />
             </Link>
-            <div className="hidden md:flex md:gap-x-20">
-              {HEADER_LINKS.map(({ href, label, target }) => (
-                <NavLink key={label} href={href} target={target}>
-                  {label}
-                </NavLink>
-              ))}
-            </div>
+          </div>
+
+          <div className="hidden md:flex md:gap-x-20 items-center">
+            {HEADER_LINKS.map(({ href, label, target }) => (
+              <NavLink key={label} href={href} target={target}>
+                {label}
+              </NavLink>
+            ))}
           </div>
 
           <div className="flex items-center gap-x-5 md:gap-x-8">
