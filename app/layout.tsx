@@ -5,6 +5,7 @@ import "./styles/lib/highlight.css";
 
 import Locale from "./locales";
 import { Header } from "./components/Header";
+import Footer from "./components/Footer";
 import { type Metadata } from "next";
 import { Toaster } from "@/app/components/ui/toaster";
 import { ThemeProvider } from "@/app/components/layout/theme-provider";
@@ -76,6 +77,7 @@ export default function RootLayout({
             {children}
             <Toaster />
           </ThemeProvider>
+          <Footer />
         </body>
       </html>
   </ThirdwebProvider>
