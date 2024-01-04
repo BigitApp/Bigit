@@ -44,7 +44,7 @@ const en = {
     Github: "Github",
     Logout: "Logout",
     Settings: "Settings",
-    subtitle: "Create Ai assistant that know you",
+    subtitle: "Create AI assistant that know you",
     create: "Create Bot",
   },
   Settings: {
