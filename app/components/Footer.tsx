@@ -31,7 +31,7 @@ export default function Footer() {
 
                     {/* 2nd block */}
                     <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-                        <h6 className="text-white font-medium mb-2">Dapps</h6>
+                        <h6 className="text-green-600 font-bold mb-2">Dapps</h6>
                         <ul className="text-sm">
                             <li className="mb-2">
                                 <a href="https:/bigit.site" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Bigit</a>
@@ -41,7 +41,7 @@ export default function Footer() {
 
                     {/* 3rd block */}
                     <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-                        <h6 className="text-white font-medium mb-2">Resources</h6>
+                        <h6 className="text-green-600 font-bold mb-2">Resources</h6>
                         <ul className="text-sm">
                             <li className="mb-2">
                                 <a href="https:/docs.bigit.site" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Docs</a>
@@ -60,7 +60,7 @@ export default function Footer() {
 
                     {/* 4th block */}
                     <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-                        <h6 className="text-white font-medium mb-2">Community</h6>
+                        <h6 className="text-green-600 font-bold mb-2">Community</h6>
                         <ul className="text-sm">
                             <li className="mb-2">
                                 <a href="https://discord.gg/MyBQDw2b" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Discord</a>
@@ -76,7 +76,7 @@ export default function Footer() {
 
                     {/* 5th block */}
                     <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-                        <h6 className="text-white font-medium mb-2">General</h6>
+                        <h6 className="text-green-600 font-bold mb-2">General</h6>
                         <ul className="text-sm">
                             <li className="mb-2">
                                 <a href="mailto:support@bigit.site" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Contact Us</a>
