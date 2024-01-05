@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import { type Metadata } from "next";
 import { Toaster } from "@/app/components/ui/toaster";
 import { ThemeProvider } from '@mui/material/styles'
+import { Analytics } from '@vercel/analytics/react';
+
 import {
   ThirdwebProvider,
   metamaskWallet,
@@ -61,6 +63,7 @@ export default function RootLayout({
               <Header />
           </div>
             {children}
+            <Analytics />
             <Toaster />
           <Footer />
         </body>
