@@ -185,6 +185,7 @@ export async function POST(request: NextRequest) {
         "Cache-Control": "no-cache, no-transform",
       },
     });
+    
   } catch (error) {
     console.error("[LlamaIndex]", error);
     return NextResponse.json(
