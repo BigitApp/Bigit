@@ -67,7 +67,7 @@ const useHeaders = () => {
     useMemo(
       () => [
         {
-          href: '/Market',
+          href: '/market',
           label: 'Market',
         },
         {

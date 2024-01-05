@@ -34,7 +34,7 @@ export default function Footer() {
                         <h6 className="text-green-600 text-xl font-bold mb-2">Dapps</h6>
                         <ul className="text-base">
                             <li className="mb-2">
-                                <a href="https:/bigitapp.com" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Bigit</a>
+                                <a href="https://www.bigitapp.com" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Bigit</a>
                             </li>
                         </ul>
                     </div>
@@ -44,13 +44,13 @@ export default function Footer() {
                         <h6 className="text-green-600 text-xl font-bold mb-2">Resources</h6>
                         <ul className="text-base">
                             <li className="mb-2">
-                                <a href="https:/docs.bigitapp.com" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Docs</a>
+                                <a href="https://www.docs.bigitapp.com" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Docs</a>
                             </li>
                             <li className="mb-2">
                                 <a href="mailto:support@bigitapp.com" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Support</a>
                             </li>
                             <li className="mb-2">
-                                <a href="https:/aowang66.cn" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">News</a>
+                                <a href="https://www.aowang66.cn" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">News</a>
                             </li>
                             <li className="mb-2">
                                 <a href="https://github.com/AAooWW/Bigit" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Github</a>
@@ -66,10 +66,10 @@ export default function Footer() {
                                 <a href="https://discord.gg/MyBQDw2b" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Discord</a>
                             </li>
                             <li className="mb-2">
-                                <a href="https:/aowang66.cn" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">X</a>
+                                <a href="https://www.aowang66.cn" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">X</a>
                             </li>
                             <li className="mb-2">
-                                <a href="https:/aowang66.cn" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Medium</a>
+                                <a href="https://www.aowang66.cn" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Medium</a>
                             </li>
                         </ul>
                     </div>
