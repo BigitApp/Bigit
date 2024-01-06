@@ -24,7 +24,7 @@ const Features = () => {
 
   return (
     <div className="bg-gradient-to-r from-[#eff3f9] to-[#ffffff] via-[rgba(144,238,144,0.2)] sm:pb-20 pb-10">
-      <Container className="pt-10 lg:pt-10">
+      <Container className="pt-20 lg:pt-20">
         <div className={classes.wrapper}>
           {features.map((f, idx) => (
             <div key={idx} className={`${classes.featureContainer} ${idx % 2 !== 0 && classes.not} features-card`}>
