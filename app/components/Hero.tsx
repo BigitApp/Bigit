@@ -12,7 +12,7 @@ export function Hero() {
   const { t } = useTranslation('common')
 
   return (
-    <Container className="pt-20 pb-12 text-center lg:pt-32">
+    <Container className="pt-20 pb-12 text-center lg:pt-32 bg-gradient-to-r from-[#eff3f9] to-[#ffffff] via-[rgba(144,238,144,0.2)]">
       <h1 className="font-display mx-auto max-w-4xl text-5xl font-bold tracking-tight text-slate-900 sm:text-7xl">
         <span className="relative whitespace-nowrap text-green-600">
           <svg

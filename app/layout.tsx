@@ -59,7 +59,7 @@ export default function RootLayout({
           <script src="/serviceWorkerRegister.js" defer></script>
         </head>
         <body className={`${localFont.className}`}>
-          <div style={{ height: '100px' }}>
+          <div style={{ height: '80px' }}>
               <Header />
           </div>
             {children}

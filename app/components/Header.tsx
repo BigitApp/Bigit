@@ -136,7 +136,7 @@ export function Header() {
   const isConnected = status === 'connected'
 
   return (
-    <header className="bg-gray-900 fixed top-0 w-full z-50">
+    <header style={{ height: '80px' }} className="bg-gray-900 fixed top-0 w-full z-50">
       <Container>
         <nav className="relative z-50 flex justify-between">
           <div className="flex items-center md:gap-x-20">

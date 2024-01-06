@@ -1,0 +1,172 @@
+.container {
+  width: 100%;
+  margin-bottom: 6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 2em;
+  overflow: hidden;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1440px;
+}
+
+.heading {
+  width: 100%;
+  max-width: 20em;
+  text-align: center;
+  margin-bottom: 0.5em;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+
+.heading .accent {
+  color: rgb(3, 96, 3);
+}
+
+.featureContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 6em;
+  margin-bottom: 6em;
+}
+
+.featureContainer:last-child {
+  margin-bottom: 0;
+}
+
+.featureContainer.not {
+  flex-direction: row-reverse;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  max-width: 42em;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1em;
+  transition: transform 1250ms;
+}
+
+.content > * {
+  width: 100%;
+  text-align: left;
+}
+
+.fHeading {
+  color: var(--text-sub-heading);
+  font-size: 1.2rem;
+}
+
+.fTitle {
+  font-weight: 600;
+  font-size: 2rem;
+  color: var(--text-heading);
+}
+
+.fDescription {
+  color: var(--text-sub-heading);
+  font-size: 1.2rem;
+}
+
+.fLink {
+  width: max-content;
+  color: rgb(3, 96, 3);
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  cursor: pointer;
+}
+
+.fLink div {
+  color: var(--main-color);
+}
+
+.fLink svg {
+  transition: transform 300ms;
+  fill: var(--text-sub-heading);
+  fill: var(--main-color);
+}
+
+.fLink:hover svg {
+  transform: translateX(1em);
+}
+
+.image {
+  width: 100%;
+  max-width: 36em;
+  transition: transform 1650ms;
+}
+
+@media screen and (max-width: 1200px) {
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .fLink,
+  .fDescription,
+  .fHeading {
+    font-size: 1.2rem;
+  }
+  .fTitle {
+    font-size: 1.5rem;
+  }
+
+  .image {
+    max-width: 28em;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .image {
+    max-width: 36em;
+  }
+
+  .content {
+    max-width: 100%;
+  }
+
+  .featureContainer.not,
+  .featureContainer {
+    flex-direction: column-reverse;
+    gap: 2em;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .container {
+    padding: 0 1em;
+    margin-bottom: 4em;
+  }
+
+  .content {
+    animation-delay: 300ms;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .fLink,
+  .fDescription,
+  .fHeading {
+    font-size: 1rem;
+  }
+  .fTitle {
+    font-size: 1.2rem;
+  }
+}

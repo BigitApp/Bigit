@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect } from 'react';
 import { Hero } from './components/Hero';
+import Features from "@/app/components/home/Features/Features";
 
 export default function App() {
   useEffect(() => {
@@ -10,6 +11,7 @@ export default function App() {
   return (
     <>
       <Hero />
+      <Features />
     </>
   );
 }
