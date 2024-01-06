@@ -1,11 +1,12 @@
 import { Button } from '@/app/components/ui/button'
 import { Container } from '@/app/components/Container'
-import { HandPointer } from '@/app/components/HandPointer'
 import { useTranslation } from 'next-i18next'
 import { PlusCircle } from "lucide-react";
 import Locale from "@/app/locales";
 import Link from 'next/link';
 import { FireIcon } from '@heroicons/react/24/outline'
+import dynamic from 'next/dynamic'
+const Typewriter = dynamic(() => import('@/app/components/typewriter'), { ssr: false })
 
 export function Hero() {
   const { t } = useTranslation('common')
@@ -29,9 +30,9 @@ export function Hero() {
         Generate Your Individual Assistant
       </h1>
       <p className="mx-auto mt-6 max-w-2xl text-xl tracking-tight text-slate-700">
-        {t(Locale.Home.subtitle)}
+        <Typewriter />
       </p>
-        <div className="mt-9 flex justify-center gap-x-6 items-center">
+        <div className="mt-9 flex justify-center gap-x-6 items-center ">
             <Link href="/myBot">
                 <Button className="w-full mx-auto text-base">
                     <div className="flex items-center gap-2">
