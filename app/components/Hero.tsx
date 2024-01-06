@@ -26,7 +26,7 @@ export function Hero() {
             Blockchain And AI 
           </span>
         </span>{' '}
-        Generate Your Individual AI Assistant
+        Generate Your Individual Assistant
       </h1>
       <p className="mx-auto mt-6 max-w-2xl text-xl tracking-tight text-slate-700">
         {t(Locale.Home.subtitle)}
