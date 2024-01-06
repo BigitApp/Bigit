@@ -103,8 +103,9 @@
 }
 
 .image {
-  width: 100%;
-  max-width: 36em;
+  width: 50%;
+  height: 50%;
+  max-width: 25em;
   transition: transform 1650ms;
 }
 

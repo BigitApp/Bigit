@@ -4,7 +4,6 @@ import { Container } from '@/app/components/Container'
 import classes from "./Features.module.css";
 import features from "./Feature-Script";
 import Image from 'next/image';
-import LinkIconSrc from "@/public/home/icon-arr-right-long.svg";
 
 const Features = () => {
   useEffect(() => {
