@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Container } from '@/app/components/Container'
 import classes from "./Features.module.css";
 import features from "./Feature-Script";
-import Image from 'next/image';
 
 const Features = () => {
   useEffect(() => {
@@ -24,23 +23,25 @@ const Features = () => {
   }, []);
 
   return (
-    <Container className="pt-20 pb-12 lg:pt-15 bg-gradient-to-r from-[#eff3f9] to-[#ffffff] via-[rgba(144,238,144,0.2)]">
-      <div className={classes.wrapper}>
-        {features.map((f, idx) => (
-          <div key={idx} className={`${classes.featureContainer} ${idx % 2 !== 0 && classes.not} features-card`}>
-            <div className={classes.content}>
-              <div className={classes.fHeading}>{f.heading}</div>
-              <div className={classes.fTitle}>{f.title}</div>
-              <div className={classes.fDescription}>{f.description}</div>
-              <Link href={f.url} className={classes.fLink}>
-                <div>{f.link}</div>
-              </Link>
+    <div className="bg-gradient-to-r from-[#eff3f9] to-[#ffffff] via-[rgba(144,238,144,0.2)] sm:pb-20 pb-10">
+      <Container className="pt-10 lg:pt-10">
+        <div className={classes.wrapper}>
+          {features.map((f, idx) => (
+            <div key={idx} className={`${classes.featureContainer} ${idx % 2 !== 0 && classes.not} features-card`}>
+              <div className={classes.content}>
+                <div className={classes.fHeading}>{f.heading}</div>
+                <div className={classes.fTitle}>{f.title}</div>
+                <div className={classes.fDescription}>{f.description}</div>
+                <Link href={f.url} className={classes.fLink}>
+                  <div>{f.link}</div>
+                </Link>
+              </div>
+              <img className={classes.image} src={f.image} alt="" />
             </div>
-            <img className={classes.image} src={f.image} alt="" />
-          </div>
-        ))}
-      </div>
-    </Container>
+          ))}
+        </div>
+      </Container>
+    </div>
   );
 };
 
