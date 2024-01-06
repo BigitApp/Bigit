@@ -7,7 +7,6 @@ const Typewriter = () => {
   const largeScreenFlag = useMediaQuery('(min-width: 48em)')
 
   return (
-    <div className="h-[160px] px-4 text-center md:h-[50px]">
       <TypewriterEffect
         onInit={typewriter => {
           typewriter
@@ -24,7 +23,6 @@ const Typewriter = () => {
           delay: 120,
         }}
       />
-    </div>
   )
 }
 
