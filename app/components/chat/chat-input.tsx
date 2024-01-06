@@ -209,7 +209,7 @@ export default function ChatInput(props: ChatInputProps) {
       )}
       <Textarea
         className={cn(
-          "ring-inset focus-visible:ring-offset-0 pr-28 md:pr-40 min-h-[56px]",
+          "ring-inset focus-visible:ring-offset-0 pr-28 md:pr-40 min-h-[56px] flex justify-center",
           {
             "pt-20": previewImage,
           },

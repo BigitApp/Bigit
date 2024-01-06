@@ -45,7 +45,8 @@ const en = {
     Logout: "Logout",
     Settings: "Settings",
     subtitle: "Create AI assistant that know you",
-    create: "Create Bot",
+    create: "Create AI",
+    market: "AI Market",
   },
   Settings: {
     Title: "Settings",
