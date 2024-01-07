@@ -1,11 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, FC } from "react";
 import classes from "./welcome.module.css";
 
-const Welcome = ({ showWelcomeScreen }) => {
+interface WelcomeProps {
+  showWelcomeScreen: (show: boolean) => void;
+}
+
+const Welcome: FC<WelcomeProps> = ({ showWelcomeScreen }) => {
   useEffect(() => {
-    document.getElementById("dropIcon").onanimationend = () => {
-      showWelcomeScreen(false);
-    };
+    const dropIconElement = document.getElementById("dropIcon");
+    if (dropIconElement) {
+      dropIconElement.onanimationend = () => {
+        showWelcomeScreen(false);
+      };
+    }
   }, []);
 
   return (
