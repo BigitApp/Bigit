@@ -63,10 +63,10 @@ export default function RootLayout({
           <div style={{ height: '80px' }}>
               <Header />
           </div>
-            {children}
-            <Analytics />
-            <SpeedInsights />
-            <Toaster />
+          {children}
+          <Analytics />
+          <SpeedInsights />
+          <Toaster />
           <Footer />
         </body>
       </ThemeProvider>

@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect,useState } from 'react';
-import { SearchInput } from '@/app/components/SearchInput'
-import AppListLoading from '@/app/components/AppListLoading'
+import { SearchInput } from '@/app/market/components/SearchInput'
+import AppListLoading from '@/app/market/components/AppListLoading'
 
 export default function Market() {
     const [searchValue, setSearchValue] = useState('')
