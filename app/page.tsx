@@ -11,7 +11,7 @@ export default function App() {
   }, []);
 
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
-  if (showWelcomeScreen && window.sessionStorage.showWelcomeScreen === undefined) {
+  if (typeof window !== 'undefined' && showWelcomeScreen && window.sessionStorage.showWelcomeScreen === undefined) {
     return <Welcome showWelcomeScreen={setShowWelcomeScreen} />;
   }
 
