@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import logo from '../../public/logo.png'
+import logo from '@/public/logo.svg'
+import logoText from "@/public/logoText.svg";
 
 const footerStyle = {
     backgroundColor: 'rgb(24, 24, 24)',
@@ -18,15 +19,9 @@ export default function Footer() {
 
                     {/* 1st block */}
                     <div className="sm:col-span-12 lg:col-span-3">
-                     <Link href="/" aria-label="Home">
-                        <Image className="align-middle"
-                        priority
-                        alt="logo" 
-                        src={logo} 
-                        width={50}
-                        height={50}
-                        />
-                     </Link>
+                        <Link className="py-3" href="/">
+                            <Image className="inline-block align-middle" alt="logo" height={50} src={logo} priority />
+                        </Link>
                     </div>
 
                     {/* 2nd block */}

@@ -140,10 +140,10 @@ export function Header() {
       <Container>
         <nav className="relative z-50 flex justify-between">
           <div className="flex items-center md:gap-x-20">
-          <Link className="py-3" href="/">
-            <Image className="inline-block align-middle" alt="logo" height={40} src={logo} priority />
-            <Image className="inline-block align-middle ml-3" alt="logo" height={40} src={logoText} priority></Image>
-          </Link>
+            <Link className="py-3" href="/">
+              <Image className="inline-block align-middle" alt="logo" height={40} src={logo} priority />
+              <Image className="inline-block align-middle ml-3" alt="logo" height={40} src={logoText} priority></Image>
+            </Link>
           </div>
 
           <div className="hidden md:flex md:gap-x-20 items-center">
