@@ -1,13 +1,11 @@
-import { ThemeToggle } from "@/app/components/layout/theme-toggle";
-import { Github, Settings } from "lucide-react";
+import { Settings, Bot } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useNavigate } from "react-router-dom";
-import { GITHUB_URL, Path } from "../../constant";
-import Locale from "../../locales";
+import { Path } from "../../constant";
 import { Button } from "../ui/button";
-import Typography from "../ui/typography";
 import { useSidebarContext } from "@/app/components/home";
 import { ConnectWallet, useConnectionStatus } from '@thirdweb-dev/react'
+import Link from 'next/link';
 
 const BotList = dynamic(async () => (await import("../bot/bot-list")).default, {
   loading: () => null,
@@ -40,7 +38,14 @@ export function SideBar(props: { className?: string }) {
             >
               <Settings className="h-5 w-5" />
             </Button>
-            <ThemeToggle />
+            <Link href="/market">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                >
+                  <Bot className="h-5 w-5" />
+                </Button>
+            </Link>
           </div>
           <BotList />
         </div>

@@ -20,7 +20,7 @@ export default function ChatHeader() {
       <div className="absolute top-4 left-5">
         {isMobileScreen && (
           <Button
-            size="icon"
+            size="mini"
             variant="outline"
             title={Locale.Chat.Actions.ChatList}
             onClick={() => setShowSidebar(true)}
