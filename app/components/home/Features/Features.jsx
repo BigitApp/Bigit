@@ -11,7 +11,7 @@ const Features = () => {
     window.addEventListener("scroll", () => {
       for (const card of cards) {
         const cardTop = card.getBoundingClientRect().top;
-        if (cardTop + offSet <= window.innerHeight) {
+        if (cardTop + offSet <= window.innerHeight-100) {
           card.children[0].style.transform = "translateX(0)";
           card.children[1].style.transform = "translateX(0)";
         } else {
@@ -23,7 +23,7 @@ const Features = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-[#eff3f9] to-[#ffffff] via-[rgba(144,238,144,0.2)] sm:pb-20 pb-10">
+    <div className="bg-gradient-to-r from-[#eff3f9] to-[#ffffff] via-[rgba(144,238,144,0.2)] sm:pb-20 pb-10 pt-20">
       <Container className="pt-20 lg:pt-20">
         <div className={classes.wrapper}>
           {features.map((f, idx) => (

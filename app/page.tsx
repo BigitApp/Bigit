@@ -5,7 +5,8 @@ import Features from "@/app/components/home/Features/Features";
 
 export default function App() {
   useEffect(() => {
-    document.title = "Bigit丨The world's largest platform for producing, using, and trading AI assistant NFT";
+    document.title = "Bigit: Blockchain And AI Generate Your Individual Assistant";
+    document.body.style.zoom = "110%";
   }, []);
 
   return (

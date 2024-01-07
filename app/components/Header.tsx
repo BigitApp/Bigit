@@ -9,8 +9,8 @@ import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import { ConnectWallet, useConnectionStatus } from '@thirdweb-dev/react'
 
-import logo from '../../public/logo.png'
-import logo2 from '../../public/logo2.png'
+import logo from '@/public/logo.svg'
+import logoText from "@/public/logoText.svg";
 
 function MobileNavLink({
   href,
@@ -140,15 +140,10 @@ export function Header() {
       <Container>
         <nav className="relative z-50 flex justify-between">
           <div className="flex items-center md:gap-x-20">
-            <Link href="/" aria-label="Home">
-              <Image className="align-middle"
-              priority
-              alt="logo" 
-              src={logo2} 
-              width={120}
-              height={40}
-              />
-            </Link>
+          <Link className="py-3" href="/">
+            <Image className="inline-block align-middle" alt="logo" height={40} src={logo} priority />
+            <Image className="inline-block align-middle ml-3" alt="logo" height={40} src={logoText} priority></Image>
+          </Link>
           </div>
 
           <div className="hidden md:flex md:gap-x-20 items-center">
