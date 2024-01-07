@@ -19,7 +19,7 @@ const Welcome: FC<WelcomeProps> = ({ showWelcomeScreen }) => {
     <div className={classes.container}>
       <div className={classes.gena}>Bigit</div>
       <div className={classes.drop}>
-        Start N
+        N
         <div className={classes.imageContainer}>
           <img id="dropIcon" className={classes.image} src="/logo.svg" alt="" />
         </div>
