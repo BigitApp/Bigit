@@ -1,6 +1,5 @@
 <a name="readme-top"></a>
 
-[![MIT License][license-shield]][license-url]
 [![Twitter][twitter-shield]][twitter-url]
 
 <br />
