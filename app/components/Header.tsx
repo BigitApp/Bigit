@@ -74,7 +74,12 @@ const useHeaders = () => {
           href: '/myBot',
           label: 'MyBot',
         },
-        { href: 'https://docs.bigitapp.com/', label: 'WhitePaper' },
+        {
+          href: 'https://docs.bigitapp.com/',
+          label: 'WhitePaper',
+          target: '_blank',
+          rel: 'noopener noreferrer'
+        },
       ],
       [t]
     )
