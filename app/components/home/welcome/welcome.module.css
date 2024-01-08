@@ -9,7 +9,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: white;
+  background: rgba(255, 255, 255, 0.5); /* semi-transparent white */
+  backdrop-filter: blur(10px); /* blur effect */
 }
 
 .gena,
