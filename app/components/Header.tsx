@@ -74,7 +74,7 @@ const useHeaders = () => {
           href: '/myBot',
           label: 'MyBot',
         },
-        { href: '/download', label: 'Download' },
+        { href: 'https://docs.bigitapp.com/', label: 'WhitePaper' },
       ],
       [t]
     )
