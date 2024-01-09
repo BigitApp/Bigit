@@ -11,7 +11,7 @@ const Features = () => {
     window.addEventListener("scroll", () => {
       for (const card of cards) {
         const cardTop = card.getBoundingClientRect().top;
-        if (cardTop + offSet <= window.innerHeight-120) {
+        if (cardTop + offSet <= window.innerHeight-200) {
           card.children[0].style.transform = "translateX(0)";
           card.children[1].style.transform = "translateX(0)";
         } else {
