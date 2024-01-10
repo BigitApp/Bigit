@@ -63,7 +63,7 @@ export default function Footer() {
                                 <a href="https://x.com/BigitDapp" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">X</a>
                             </li>
                             <li className="mb-2">
-                                <a href="https://www.aowang66.cn" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Medium</a>
+                                <a href="https://bigitapp.medium.com/" className="text-gray-200 hover:text-green-500 transition duration-150 ease-in-out">Medium</a>
                             </li>
                         </ul>
                     </div>
