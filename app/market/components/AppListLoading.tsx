@@ -1,9 +1,13 @@
 import { FireIcon, PlayIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
+import { useBotStore } from "@/app/store/bot";
+import { BotAvatarLarge } from "@/app/components/ui/emoji";
 
 const AppListLoading = () => {
   const { t } = useTranslation('common')
+  const botStore = useBotStore();
+  const currentBot = botStore.currentBot();
 
   return (
     <ul
@@ -13,26 +17,27 @@ const AppListLoading = () => {
       {[1, 2, 3, 4, 5, 6].map((app, idx) => (
         <li
           key={idx}
-          className="col-span-1 flex flex-col justify-between divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
+          className="col-span-1 flex flex-col justify-between divide-y divide-gray-600 rounded-lg bg-white text-center shadow border border-gray-600"
         >
           <div>
             <div className="flex flex-1 flex-col items-center p-8">
-              <div className="mx-auto flex h-24 w-24 flex-shrink-0 animate-pulse items-center justify-center rounded-full bg-gray-100 text-3xl"></div>
-              <h3 className="mt-6 animate-pulse bg-gray-100 text-sm font-medium text-gray-900">
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              <div className="bg-white flex items-center justify-center transform hover:scale-110 transition-transform duration-200 cursor-pointer">
+                <BotAvatarLarge avatar={currentBot.avatar} />
+              </div>
+              <h3 className="mt-6 text-sm font-medium text-gray-900">
+                {currentBot.modelConfig.model}
               </h3>
               <dl className="mt-1 flex flex-grow flex-col justify-between">
                 <dt className="sr-only">Title</dt>
-                <dd className="w-full animate-pulse bg-gray-100 text-center text-sm text-gray-500">
-                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <dd className="w-full text-center text-sm text-gray-500">
+                  {currentBot.name}
                 </dd>
               </dl>
             </div>
           </div>
 
           <div>
-            <div className="-mt-px flex divide-x divide-gray-200">
+            <div className="-mt-px flex divide-x divide-gray-600">
               <div className="flex w-0 flex-1">
                 <div className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
                   <FireIcon
