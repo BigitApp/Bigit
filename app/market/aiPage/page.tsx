@@ -1,7 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { Analytics } from "@vercel/analytics/react";
-import { Home } from "../components/home";
 import { AI } from "@/app/ai/AI";
 import Welcome from "@/app/components/home/welcome/welcome";
 
@@ -14,19 +13,9 @@ export default function MyBot() {
     setIsLoading(false);
   }, []);
 
-  if (isLoading) {
-    return (
-      <>
-      <Home />
-      <Analytics />
-      <Welcome showWelcomeScreen={setShowWelcomeScreen} />
-      </>
-    );
-  }
-
   return (
     <>
-      <Home />
+      <AI />
       <Analytics />
     </>
   );

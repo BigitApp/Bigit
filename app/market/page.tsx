@@ -4,6 +4,8 @@ import { SearchInput } from '@/app/market/components/SearchInput'
 import AppListLoading from '@/app/market/components/AppListLoading'
 import Welcome from "@/app/components/home/welcome/welcome";
 
+import { BrowserRouter as Router } from 'react-router-dom';
+
 export default function Market() {
     const [searchValue, setSearchValue] = useState('')
     const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +30,9 @@ export default function Market() {
                         />
                         <div />
                     </div>
-                    <AppListLoading />
+                    <Router>
+                        <AppListLoading />
+                    </Router>
                     </div>
                 </div>
             </main>
@@ -46,12 +50,14 @@ export default function Market() {
                 <div className="mb-10 grid grid-cols-1 items-center justify-between pt-10 sm:grid-cols-3 sm:pt-0 ">
                     <div />
                     <SearchInput
-                    setSearchValue={setSearchValue}
-                    placeholder={'Search AI Assistant...'}
+                        setSearchValue={setSearchValue}
+                        placeholder={'Search AI Assistant...'}
                     />
                     <div />
                 </div>
-                <AppListLoading />
+                <Router>
+                   <AppListLoading /> 
+                </Router>
                 </div>
             </div>
         </main>

@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { LLMConfig } from "../client/platforms/llm";
+import { LLMConfig } from "@/app/client/platforms/llm";
 import { ChatSession, ChatMessage, createEmptySession } from "./session";
 import { DEMO_BOTS, createDemoBots, createEmptyBot } from "@/app/bots/bot.data";
 
@@ -53,7 +53,7 @@ type BotStore = BotState & {
 
 const demoBots = createDemoBots();
 
-export const useBotStore = create<BotStore>()(
+export const useBotStore2 = create<BotStore>()(
   persist(
     (set, get) => ({
       bots: demoBots,
@@ -142,6 +142,7 @@ export const useBotStore = create<BotStore>()(
           throw new Error("no state object");
         }
         set(() => ({ bots: state.bots }));
+        console.log("restored bots", state.bots);
       },
       clearAllData() {
         localStorage.clear();
@@ -149,7 +150,7 @@ export const useBotStore = create<BotStore>()(
       },
     }),
     {
-      name: "bot-store",
+      name: "bot-store-2",
       version: 1,
       migrate: (persistedState, version) => {
         const state = persistedState as BotState;

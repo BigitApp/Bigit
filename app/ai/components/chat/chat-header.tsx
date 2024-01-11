@@ -1,16 +1,16 @@
 import { Button } from "@/app/components/ui/button";
-import { useBotStore } from "@/app/store/bot";
+import { useBotStore2 } from "@/app/ai/store/bot";
 import { Undo2 } from "lucide-react";
 import Locale from "@/app/locales";
-import { useMobileScreen } from "../../utils/mobile";
-import { useSidebarContext } from "@/app/components/home";
-import { Separator } from "../ui/separator";
-import Typography from "../ui/typography";
+import { useMobileScreen } from "@/app/utils/mobile";
+import { useSidebarContext } from "@/app/ai/AI";
+import { Separator } from "@/app/components/ui/separator";
+import Typography from "@/app/components/ui/typography";
 
 export default function ChatHeader() {
   const isMobileScreen = useMobileScreen();
   const { setShowSidebar } = useSidebarContext();
-  const botStore = useBotStore();
+  const botStore = useBotStore2();
   const bot = botStore.currentBot();
   const session = botStore.currentSession();
   const numberOfMessages =
