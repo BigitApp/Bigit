@@ -111,14 +111,14 @@ const en = {
   Bot: {
     Name: "Bot",
     Page: {
-      Search: (count: number) => `Search Bot - ${count} bots`,
-      Create: "Create bot",
+      Search: (count: number) => `Search AI - ${count} AIs`,
+      Create: "Create AI",
     },
     Item: {
       Edit: "Edit",
       Delete: "Delete",
       DeleteConfirm: "Confirm to delete?",
-      Share: "Share",
+      Mint: "Mint",
     },
     EditModal: {
       Title: `Edit Bot`,

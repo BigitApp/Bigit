@@ -18,14 +18,26 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../../ui/dropdown-menu";
+import {HardDriveDownload} from "lucide-react";
 import { useBot } from "../use-bot";
 import DeleteBotDialogContent from "./delete-bot-dialog";
 import EditBotDialogContent from "./edit-bot-dialog";
-import ShareBotDialogContent from "./share-bot-dialog";
+import { downloadAs } from "../../../utils/download";
+import { useBotStore } from "../../../store/bot";
+import { FileName } from "@/app/constant";
 
 export default function BotOptions() {
+
+  const botStore = useBotStore();
   const { isReadOnly, isShareble, cloneBot } = useBot();
   const [dialogContent, setDialogContent] = useState<JSX.Element | null>(null);
+
+  const backupBots = () => {
+    const currentBot = botStore.currentBot();
+    const botName = currentBot ? currentBot.name : 'Bot';
+    downloadAs(JSON.stringify(currentBot), `${botName}.json`);
+  };
+
 
   return (
     <Dialog>
@@ -65,10 +77,10 @@ export default function BotOptions() {
             <DialogTrigger asChild>
               <DropdownMenuItem
                 disabled={isReadOnly}
-                onClick={() => setDialogContent(<ShareBotDialogContent />)}
+                onClick={backupBots}
               >
-                <Share2 className="mr-2 w-4 h-4" />
-                <span>{Locale.Bot.Item.Share}</span>
+                <HardDriveDownload className="mr-2 w-4 h-4" />
+                <span>{Locale.Bot.Item.Mint}</span>
               </DropdownMenuItem>
             </DialogTrigger>
           </DropdownMenuContent>

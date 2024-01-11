@@ -25,6 +25,8 @@ import ChatHeader from "./chat-header";
 import ChatInput from "./chat-input";
 import { ClearContextDivider } from "./clear-context-divider";
 import { isImageFileType } from "@/app/client/fetch/file";
+import { BotAvatar } from "@/app/components/ui/emoji";
+
 
 const Markdown = dynamic(
   async () => (await import("../ui/markdown")).Markdown,
@@ -226,10 +228,22 @@ export function Chat() {
                 <div
                   className={
                     isUser
-                      ? "flex flex-row-reverse"
-                      : "flex flex-row last:animate-[slide-in_ease_0.3s]"
+                    ? "flex flex-row-reverse items-center"
+                    : "flex flex-row items-center last:animate-[slide-in_ease_0.3s]"
                   }
                 >
+                  {!isUser && (
+                    <div className="w-[18px] h-[18px] mt-[-15px] mr-[5px]">
+                      <BotAvatar avatar={bot.avatar} />
+                    </div>
+                  )}
+
+                  {isUser && (
+                    <div className="w-[18px] h-[18px] mt-[-15px] ml-[5px]">
+                      <BotAvatar avatar={bot.avatar} />
+                    </div>
+                  )}
+
                   <HoverCard openDelay={200}>
                     <HoverCardTrigger asChild>
                       <div
