@@ -35,7 +35,16 @@ export default function BotOptions() {
   const backupBots = () => {
     const currentBot = botStore.currentBot();
     const botName = currentBot ? currentBot.name : 'Bot';
-    downloadAs(JSON.stringify(currentBot), `${botName}.json`);
+    const botId = currentBot.id;
+
+    const dataToDownload = {
+      bots: {
+        [botId]: currentBot,
+      },
+      currentBotId: botId,
+    };
+
+    downloadAs(JSON.stringify(dataToDownload), `${botName}.json`);
   };
 
 

@@ -21,32 +21,6 @@ export function SideBar(props: { className?: string }) {
     <div className="h-full relative group border-r w-full md:w-[300px]">
       <div className="w-full h-full p-5 flex flex-col gap-5">
         <div className="flex flex-col flex-1">
-          <div className="mb-5 flex justify-between items-center gap-4">
-            <ConnectWallet 
-              className={`${isConnected ? 'border-none bg-black-main text-white' : 'p-2 text-white'}`}
-              theme={"dark"}
-              switchToActiveChain={true}
-              modalSize={"compact"}
-            />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => {
-                navigate(Path.Settings);
-                setShowSidebar(false);
-              }}
-            >
-              <Settings className="h-5 w-5" />
-            </Button>
-            <Link href="/market">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                >
-                  <Bot className="h-5 w-5" />
-                </Button>
-            </Link>
-          </div>
           <BotList />
         </div>
       </div>

@@ -1,19 +1,16 @@
-import EditBotDialogContent from "@/app/ai/components/bot/bot-options/edit-bot-dialog";
-import { BotItemContextProvider } from "@/app/ai/components/bot/use-bot";
-import { Dialog, DialogTrigger } from "@/app/components/ui/dialog";
-import { PlusCircle } from "lucide-react";
+import { Fingerprint, Users, Boxes  } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Path } from "@/app/constant";
 import Locale from "@/app/locales";
 import { useBotStore2 } from "@/app/ai/store/bot";
-import { Button } from "@/app/components/ui/button";
-import { Input } from "@/app/components/ui/input";
 import { ScrollArea } from "@/app/components/ui/scroll-area";
 import BotItem from "./bot-item";
+import { BotAvatarLarge } from "@/app/components/ui/emoji";
 
 export default function BotList() {
   const botStore = useBotStore2();
+  const currentBot = botStore.currentBot();
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [editBotId, setEditBotId] = useState<string | undefined>(undefined);
@@ -39,30 +36,28 @@ export default function BotList() {
 
   return (
     <div className="flex-1" onClick={onClickContainer}>
-      <div className="space-y-2 mb-4">
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button className="w-full" onClick={onClickCreate}>
-              <PlusCircle className="mr-2 h-4 w-4" /> {Locale.Bot.Page.Create}
-            </Button>
-          </DialogTrigger>
-          {editBot && (
-            <BotItemContextProvider bot={editBot}>
-              <EditBotDialogContent />
-            </BotItemContextProvider>
-          )}
-        </Dialog>
-        <Input
-          className="text-center"
-          type="text"
-          placeholder={Locale.Bot.Page.Search(allBots.length)}
-          onInput={(e) => setSearchText(e.currentTarget.value)}
-        />
-      </div>
-      <ScrollArea className="h-[60vh] pr-0 md:pr-3">
+      <ScrollArea className="h-[80vh] pr-0 md:pr-3 flex flex-col items-center justify-center space-y-4 p-4 rounded-lg">
         {botList.map((b) => (
           <BotItem key={b.id} bot={b} />
         ))}
+        <div className="bg-white flex items-center justify-center mb-4 transform hover:scale-110 transition-transform duration-200 cursor-pointer">
+          <BotAvatarLarge avatar={currentBot.avatar} />
+        </div>
+        <div className="text-base text-center bg-green-600 text-white p-2 border border-gray-300 rounded flex items-center justify-center">
+          <Fingerprint className="mr-2 h-4 w-4" />
+          Bot ID
+        </div>
+        <div className="text-base text-center bg-white text-black p-2 border border-gray-300 rounded mb-4">{currentBot.id}</div>
+        <div className="text-base text-center bg-green-600 text-white p-2 border border-gray-300 rounded flex items-center justify-center">
+          <Users className="mr-2 h-4 w-4" />
+          Bot Name
+        </div>
+        <div className="text-base text-center bg-white text-black p-2 border border-gray-300 rounded mb-4">{currentBot.name}</div>
+        <div className="text-base text-center bg-green-600 text-white p-2 border border-gray-300 rounded flex items-center justify-center">
+          <Boxes className="mr-2 h-4 w-4" />
+          Bot Model
+        </div>
+        <div className="text-base text-center bg-white text-black p-2 border border-gray-300 rounded">{currentBot.modelConfig.model}</div>
       </ScrollArea>
     </div>
   );

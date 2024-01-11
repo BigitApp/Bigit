@@ -37,3 +37,8 @@ export function BotAvatar(props: { avatar: string }) {
   const { avatar } = props;
   return <EmojiAvatar avatar={avatar} />;
 }
+
+export function BotAvatarLarge(props: { avatar: string }) {
+  const { avatar } = props;
+  return <EmojiAvatar avatar={avatar} size={72} />;
+}
