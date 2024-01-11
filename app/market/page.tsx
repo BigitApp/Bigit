@@ -4,7 +4,12 @@ import { SearchInput } from '@/app/market/components/SearchInput'
 import AppListLoading from '@/app/market/components/AppListLoading'
 import Welcome from "@/app/components/home/welcome/welcome";
 
-import { BrowserRouter as Router } from 'react-router-dom';
+import {
+    Route,
+    HashRouter as Router,
+    Routes,
+    useNavigate,
+  } from "react-router-dom";
 
 export default function Market() {
     const [searchValue, setSearchValue] = useState('')
