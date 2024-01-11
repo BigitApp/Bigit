@@ -1,6 +1,6 @@
 import { FireIcon, PlayIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'next-i18next'
-import { Link } from "react-router-dom";
+import Link from 'next/link'
 
 const AppListLoading = () => {
   const { t } = useTranslation('common')
@@ -44,9 +44,9 @@ const AppListLoading = () => {
               </div>
               <div className="-ml-px flex w-0 flex-1">
                 <div className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                  <Link to="/market/aiPage" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                  <Link href="/market/aiPage" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <PlayIcon
-                      className="h-5 w-5 text-green-700 mr-2"
+                      className="h-5 w-5 text-green-700 mr-2.5"
                       aria-hidden="true"
                     />
                     {t('Run')}
