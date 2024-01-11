@@ -163,7 +163,6 @@ export function Header() {
             <div className="flex items-center space-x-8" style={{ height: '80px' }}>
               <ConnectWallet 
                   className={`${isConnected ? 'border-none bg-black-main text-white' : 'p-2 text-white'}`}
-                  theme={"dark"}
                   switchToActiveChain={true}
                   modalSize={"compact"}
               />
