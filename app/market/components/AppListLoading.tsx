@@ -1,13 +1,32 @@
 import { FireIcon, PlayIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'next-i18next'
-import Link from 'next/link'
 import { useBotStore } from "@/app/store/bot";
 import { BotAvatarLarge } from "@/app/components/ui/emoji";
+import { useRouter } from 'next/router';
+
+import { useSetIsWalletModalOpen, useConnectionStatus } from '@thirdweb-dev/react'
+import { useNavigate } from "react-router-dom";
 
 const AppListLoading = () => {
+
+  const setIsWalletModalOpen = useSetIsWalletModalOpen()
+  const status = useConnectionStatus()
+  const isConnected = status === 'connected'
   const { t } = useTranslation('common')
   const botStore = useBotStore();
   const currentBot = botStore.currentBot();
+  const navigate = useNavigate();
+
+  const handleBuy = async () => {   //购买的逻辑
+    if (!isConnected) {
+      setIsWalletModalOpen(true)
+      return
+    }
+  }
+
+  const handleRun = async () => {   //Run的逻辑
+    navigate('/market/aiPage');
+  }
 
   return (
     <ul
@@ -39,7 +58,7 @@ const AppListLoading = () => {
           <div>
             <div className="-mt-px flex divide-x divide-gray-600">
               <div className="flex w-0 flex-1">
-                <div className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
+                <div className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900 cursor-pointer transform hover:scale-110 transition-transform duration-200" onClick={handleBuy}>
                   <FireIcon
                     className="h-5 w-5 text-green-700"
                     aria-hidden="true"
@@ -48,14 +67,12 @@ const AppListLoading = () => {
                 </div>
               </div>
               <div className="-ml-px flex w-0 flex-1">
-                <div className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                  <Link href="/market/aiPage" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <div className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900 cursor-pointer transform hover:scale-110 transition-transform duration-200" onClick={handleRun}>
                     <PlayIcon
-                      className="h-5 w-5 text-green-700 mr-2.5"
+                      className="h-5 w-5 text-green-700"
                       aria-hidden="true"
                     />
                     {t('Run')}
-                  </Link>
                 </div>
               </div>
             </div>
