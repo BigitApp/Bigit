@@ -5,6 +5,7 @@ export enum Path {
   Chat = "/",
   Settings = "/settings",
   Bots = "/",
+  aiPage = '/market/aiPage',
 }
 
 export enum FileName {

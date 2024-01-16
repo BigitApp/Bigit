@@ -2,10 +2,12 @@ import { FireIcon, PlayIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'next-i18next'
 import { useBotStore } from "@/app/store/bot";
 import { BotAvatarLarge } from "@/app/components/ui/emoji";
-import { useRouter } from 'next/router';
+import Link from 'next/link'
 
 import { useSetIsWalletModalOpen, useConnectionStatus } from '@thirdweb-dev/react'
 import { useNavigate } from "react-router-dom";
+import { Path } from "@/app/constant";
+
 
 const AppListLoading = () => {
 
@@ -25,7 +27,7 @@ const AppListLoading = () => {
   }
 
   const handleRun = async () => {   //Run的逻辑
-    navigate('/market/aiPage');
+    navigate('aiPage');
   }
 
   return (
@@ -67,12 +69,14 @@ const AppListLoading = () => {
                 </div>
               </div>
               <div className="-ml-px flex w-0 flex-1">
-                <div className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg py-4 text-sm font-semibold text-gray-900 cursor-pointer transform hover:scale-110 transition-transform duration-200" onClick={handleRun}>
-                    <PlayIcon
-                      className="h-5 w-5 text-green-700"
-                      aria-hidden="true"
-                    />
-                    {t('Run')}
+                <div className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg py-4 text-sm font-semibold text-gray-900 cursor-pointer transform hover:scale-110 transition-transform duration-200">
+                    <Link href="/market/aiPage" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                      <PlayIcon
+                        className="h-5 w-5 text-green-700 mr-2.5"
+                        aria-hidden="true"
+                      />
+                      {t('Run')}
+                    </Link>
                 </div>
               </div>
             </div>
