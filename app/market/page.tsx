@@ -4,8 +4,14 @@ import { SearchInput } from '@/app/market/components/SearchInput'
 import AppListLoading from '@/app/market/components/AppListLoading'
 import Welcome from "@/app/components/home/welcome/welcome";
 
-import { HashRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
 
+import dynamic from 'next/dynamic';
+
+const DynamicBrowserRouter = dynamic(
+  () => import('react-router-dom').then((mod) => mod.BrowserRouter),
+  { ssr: false }
+);
 
 export default function Market() {
     const [searchValue, setSearchValue] = useState('')
@@ -31,9 +37,9 @@ export default function Market() {
                         />
                         <div />
                     </div>
-                    <Router>
+                    <DynamicBrowserRouter>
                         <AppListLoading />
-                    </Router>
+                    </DynamicBrowserRouter>
                     </div>
                 </div>
             </main>
@@ -56,9 +62,9 @@ export default function Market() {
                     />
                     <div />
                 </div>
-                <Router>
+                <DynamicBrowserRouter>
                    <AppListLoading /> 
-                </Router>
+                </DynamicBrowserRouter>
                 </div>
             </div>
         </main>
