@@ -189,7 +189,6 @@ export function Header() {
               theme={customLightTheme}
               modalSize={"compact"}
               modalTitleIconUrl={""}
-              showThirdwebBranding={false}
               switchToActiveChain={true}
               />
             </div>
