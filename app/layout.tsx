@@ -10,6 +10,7 @@ import { Toaster } from "@/app/components/ui/toaster";
 import { ThemeProvider } from '@mui/material/styles'
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import {Sepolia} from '@thirdweb-dev/chains'
 
 import {
   ThirdwebProvider,
@@ -34,7 +35,8 @@ export default function RootLayout({
 }) {
   return (
   <ThirdwebProvider
-    activeChain="goerli"
+    supportedChains={[Sepolia]}
+    activeChain={Sepolia}
     clientId="758c04f9bf0da56dc07ff4c7e6d18b83"
     supportedWallets={[
       metamaskWallet({ recommended: true }),

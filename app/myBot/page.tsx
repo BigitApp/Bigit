@@ -5,9 +5,11 @@ import { Home } from "../components/home";
 import { AI } from "@/app/ai/AI";
 import Welcome from "@/app/components/home/welcome/welcome";
 
+
 export default function MyBot() {
   const [isLoading, setIsLoading] = useState(true);
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
+
 
   useEffect(() => {
     document.title = "Bigit丨MyBot";

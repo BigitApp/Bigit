@@ -22,29 +22,35 @@ import {HardDriveDownload} from "lucide-react";
 import { useBot } from "../use-bot";
 import DeleteBotDialogContent from "./delete-bot-dialog";
 import EditBotDialogContent from "./edit-bot-dialog";
+import MintBotDialogContent from "./mint-bot-dialog";
 import { downloadAs } from "../../../utils/download";
 import { useBotStore } from "../../../store/bot";
 import { FileName } from "@/app/constant";
+import { useConnectionStatus } from "@thirdweb-dev/react";
 
 export default function BotOptions() {
 
   const botStore = useBotStore();
   const { isReadOnly, isShareble, cloneBot } = useBot();
   const [dialogContent, setDialogContent] = useState<JSX.Element | null>(null);
+  const status = useConnectionStatus()
+  const isConnected = status === 'connected'
 
-  const backupBots = () => {
-    const currentBot = botStore.currentBot();
-    const botName = currentBot ? currentBot.name : 'Bot';
-    const botId = currentBot.id;
-
-    const dataToDownload = {
-      bots: {
-        [botId]: currentBot,
-      },
-      currentBotId: botId,
-    };
-
-    downloadAs(JSON.stringify(dataToDownload), `${botName}.json`);
+  const mintBots = () => {
+    if (!isConnected) {
+      setDialogContent(<DeleteBotDialogContent/>)
+    } else {
+      const currentBot = botStore.currentBot();
+      const botName = currentBot ? currentBot.name : 'Bot';
+      const botId = currentBot.id;
+      const dataToDownload = {
+        bots: {
+          [botId]: currentBot,
+        },
+        currentBotId: botId,
+      };
+      downloadAs(JSON.stringify(dataToDownload), `${botName}.json`);
+    }
   };
 
   return (
@@ -85,7 +91,7 @@ export default function BotOptions() {
             <DialogTrigger asChild>
               <DropdownMenuItem
                 disabled={isReadOnly}
-                onClick={backupBots}
+                onClick={() => setDialogContent(<MintBotDialogContent />)}
               >
                 <HardDriveDownload className="mr-2 w-4 h-4" />
                 <span>{Locale.Bot.Item.Mint}</span>
