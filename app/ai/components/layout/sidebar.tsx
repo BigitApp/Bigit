@@ -4,18 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { Path } from "@/app/constant";
 import { Button } from "@/app/components/ui/button";
 import { useSidebarContext } from "@/app/ai/AI";
-import { ConnectWallet, useConnectionStatus } from '@thirdweb-dev/react'
 import Link from 'next/link';
 
 const BotList = dynamic(async () => (await import("@/app/ai/components/bot/bot-list")).default, {
   loading: () => null,
 });
 
+
 export function SideBar(props: { className?: string }) {
   const navigate = useNavigate();
   const { setShowSidebar } = useSidebarContext();
-  const status = useConnectionStatus()
-  const isConnected = status === 'connected'
 
   return (
     <div className="h-full relative group border-r w-full md:w-[300px]">

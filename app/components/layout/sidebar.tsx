@@ -23,10 +23,11 @@ export function SideBar(props: { className?: string }) {
         <div className="flex flex-col flex-1">
           <div className="mb-5 flex justify-between items-center gap-4">
             <ConnectWallet 
-              className={`${isConnected ? 'border-none bg-black-main text-white' : 'p-2 text-white'}`}
-              theme={"dark"}
-              switchToActiveChain={true}
+              // className={`${isConnected ? 'border-none bg-black-main text-white' : 'p-2 text-white'}`}
+              theme={"light"}
               modalSize={"compact"}
+              modalTitleIconUrl={""}
+              switchToActiveChain={true}
             />
             <Button
               variant="ghost"

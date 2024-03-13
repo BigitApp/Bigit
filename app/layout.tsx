@@ -5,9 +5,7 @@ import "./styles/lib/highlight.css";
 import loadFont from 'next/font/local'
 import { Header } from "./components/Header";
 import Footer from "./components/Footer";
-import { type Metadata } from "next";
 import { Toaster } from "@/app/components/ui/toaster";
-import { ThemeProvider } from '@mui/material/styles'
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import {Sepolia} from '@thirdweb-dev/chains'
@@ -20,7 +18,6 @@ import {
   localWallet,
   embeddedWallet,
 } from "@thirdweb-dev/react";
-import { darkTheme } from './_theme/index.js'
 
 const localFont = loadFont({
   src: '../public/fonts/BaiJamjuree-Regular.ttf',
@@ -56,7 +53,6 @@ export default function RootLayout({
     ]}
   > 
     <html lang="en">
-      <ThemeProvider theme={darkTheme}>
         <head>
           <link rel="manifest" href="/site.webmanifest"></link>
           <script src="/serviceWorkerRegister.js" defer></script>
@@ -71,7 +67,6 @@ export default function RootLayout({
           <Toaster />
           <Footer />
         </body>
-      </ThemeProvider>
     </html>
   </ThirdwebProvider>
    

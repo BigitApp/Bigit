@@ -30,8 +30,8 @@ const loading = {
             dom.setAttribute('class', 'myLoading fixed w-full h-full left-0 top-0 z-50');
             dom.setAttribute('style', 'background-color: rgba(7, 17, 27, 0)');
             document.body.appendChild(dom);
-            const root = ReactDOM.createRoot(dom);
-            root.render(LoadingContainer(loadingText));
+            // const root = ReactDOM.createRoot(dom);
+            // root.render(LoadingContainer(loadingText));
             // 禁用按钮
             const buttons = document.querySelectorAll('.button');
             buttons.forEach((button: HTMLButtonElement) => {
