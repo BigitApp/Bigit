@@ -16,6 +16,16 @@ interface NFT {
     avatar: string;
 }
 
+interface NFTList {
+    price: string;
+    tokenId: number;
+    seller: string;
+    owner: string;
+    bot: string;
+    name: string;
+    avatar: string;
+  }
+
 const contractFactory = () => {
     const contracts: { [address: string]: Contract } = {};
 
@@ -91,7 +101,7 @@ export const fetchMyNFTs = async () => {
 };
 
 
-export const buyNFT = async (nft: NFT) => {
+export const buyNFT = async (nft: NFTList) => {
     const NFTContract = getContractFn(NFTContractAddress, BotNFTAbi);
     const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
     const txn = await NFTContract.createMarketSale(nft.tokenId, {
