@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useSetIsWalletModalOpen, useConnectionStatus } from '@thirdweb-dev/react';
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import AppListLoading from '@/app/market/components/AppListLoading'
 
 interface NFT {
   price: string;
@@ -20,15 +21,19 @@ interface NFT {
 
 const AppList = () => {
   const [myNfts, setmyNfts] = useState<NFT[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
         const allData = await fetchMyNFTs();
         console.log(allData)
         setmyNfts(allData);
       } catch (error) {
         console.error('Error fetching NFTs:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchData();
@@ -57,6 +62,8 @@ const AppList = () => {
   }
 
   return (
+    <div style={{ marginBottom: '1rem' }}>
+    { isLoading && <AppListLoading />}
     <ul
       role="list"
       className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
@@ -119,6 +126,7 @@ const AppList = () => {
         </li>
       ))}
     </ul>
+  </div>
   )
 }
 
