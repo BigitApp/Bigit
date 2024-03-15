@@ -95,7 +95,11 @@ const useHeaders = () => {
         },
         {
           href: '/myBot',
-          label: 'MyBot',
+          label: 'My Bot',
+        },
+        {
+          href: '/myBotNft',
+          label: 'My Bot NFT',
         },
         {
           href: 'https://docs.bigitapp.com/',
@@ -185,12 +189,12 @@ export function Header() {
           <div className="flex items-center gap-x-5 md:gap-x-8">
             <div className="flex items-center space-x-8" style={{ height: '80px' }}>
             <ConnectWallet 
-              className="!absolute !right-4" 
-              theme={customLightTheme}
-              modalSize={"compact"}
-              modalTitleIconUrl={""}
-              switchToActiveChain={true}
-              />
+                  className={`${isConnected ? 'border-none bg-black-main text-white' : 'p-2 text-white'}`}
+                  theme={"light"}
+                  switchToActiveChain={true}
+                  modalSize={"compact"}
+                  modalTitleIconUrl={""}
+            />
             </div>
             <div className="-mr-1 md:hidden">
               <MobileNavigation />

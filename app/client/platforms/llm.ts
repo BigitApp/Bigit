@@ -31,6 +31,7 @@ export interface ResponseMessage {
 }
 
 export const ALL_MODELS = [
+  "ChatGLM-6b",
   "gpt-4",
   "gpt-4-1106-preview",
   "gpt-4-vision-preview",

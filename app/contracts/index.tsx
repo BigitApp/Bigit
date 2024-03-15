@@ -2,9 +2,19 @@ import { providers, Contract } from 'ethers'
 import { ethers } from "ethers";
 import BotNFTAbi from './BotNFTABI.json'
 import { Amount } from '@thirdweb-dev/sdk';
+import axios from 'axios';
 
 const NFTContractAddress = '0xfb6bbf05aD57F73581cDb68A678f5064FCa99aC8'
 
+interface NFT {
+    price: string;
+    tokenId: number;
+    seller: string;
+    owner: string;
+    bot: string;
+    name: string;
+    avatar: string;
+  }
 
 const contractFactory = () => {
     const contracts: { [address: string]: Contract } = {};
@@ -32,3 +42,60 @@ export const createToken = async (url: string, price: string) => {
     return txn.wait()
 };
 
+export const loadNFTs = async () => {
+    const NFTContract = getContractFn(NFTContractAddress, BotNFTAbi);
+    const NFTData = await NFTContract.fetchMarketItems()
+
+    const items = await Promise.all(NFTData.map(async i => {
+        const tokenUri = await NFTContract.tokenURI(i.tokenId)
+        const meta = await axios.get(tokenUri)
+        const botData = meta.data.bots;
+        const firstKey = Object.keys(botData)[0];
+        const firstBotValue = botData[firstKey];
+        let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
+        let item = {
+          price,
+          tokenId: i.tokenId.toNumber(),
+          seller: i.seller,
+          owner: i.owner,
+          name: firstBotValue.name,
+          avatar:firstBotValue.avatar
+        }
+        return item
+    }))
+    return items
+};
+
+export const fetchMyNFTs = async () => {
+    const NFTContract = getContractFn(NFTContractAddress, BotNFTAbi);
+    const NFTData = await NFTContract.fetchMyNFTs()
+
+    const items = await Promise.all(NFTData.map(async i => {
+        const tokenUri = await NFTContract.tokenURI(i.tokenId)
+        const meta = await axios.get(tokenUri)
+        const botData = meta.data.bots;
+        const firstKey = Object.keys(botData)[0];
+        const firstBotValue = botData[firstKey];
+        let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
+        let item = {
+          price,
+          tokenId: i.tokenId.toNumber(),
+          seller: i.seller,
+          owner: i.owner,
+          name: firstBotValue.name,
+          avatar:firstBotValue.avatar
+        }
+        return item
+    }))
+    return items
+};
+
+
+export const buyNFT = async (nft: NFT) => {
+    const NFTContract = getContractFn(NFTContractAddress, BotNFTAbi);
+    const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
+    const txn = await NFTContract.createMarketSale(nft.tokenId, {
+      value: price
+    })
+    return txn.wait()
+};
