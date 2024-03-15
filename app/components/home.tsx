@@ -40,42 +40,9 @@ const useHasHydrated = () => {
   return hasHydrated;
 };
 
-const loadAsyncGoogleFont = () => {
-  const linkEl = document.createElement("link");
-  const googleFontUrl = "https://fonts.googleapis.com";
-  linkEl.rel = "stylesheet";
-  linkEl.href =
-    googleFontUrl + "/css2?family=Noto+Sans:wght@300;400;700;900&display=swap";
-  document.head.appendChild(linkEl);
-};
 
-// if a bot is passed this HOC ensures that the bot is added to the store
-// and that the user can directly have a chat session with it
 function withBot(Component: React.FunctionComponent, bot?: Bot) {
   return function WithBotComponent() {
-    const [botInitialized, setBotInitialized] = useState(false);
-    const navigate = useNavigate();
-    const botStore = useBotStore();
-    if (bot && !botInitialized) {
-      if (!bot.share?.id) {
-        throw new Error("bot must have a shared id");
-      }
-      // ensure that bot for the same share id is not created a 2nd time
-      let sharedBot = botStore.getByShareId(bot.share?.id);
-      if (!sharedBot) {
-        sharedBot = botStore.create(bot, { readOnly: true });
-      }
-      // let the user directly chat with the bot
-      botStore.selectBot(sharedBot.id);
-      setTimeout(() => {
-        // redirect to chat - use history API to clear URL
-        history.pushState({}, "", "/");
-        navigate(Path.Chat);
-      }, 1);
-      setBotInitialized(true);
-      return <LoadingPage />;
-    }
-
     return <Component />;
   };
 }
@@ -110,9 +77,6 @@ function Screen() {
 
   const showSidebarOnMobile = showSidebar || !isMobileScreen;
 
-  useEffect(() => {
-    loadAsyncGoogleFont();
-  }, []);
 
   return (
     <main className="flex overflow-hidden h-[85vh] w-screen box-border">

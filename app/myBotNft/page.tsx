@@ -1,9 +1,11 @@
 "use client"
 import React, { useEffect,useState } from 'react';
-import { SearchInput } from '@/app/market/components/SearchInput'
-import AppList from '@/app/market/components/AppList'
-import AppListLoading from '@/app/market/components/AppListLoading'
+import { SearchInput } from '@/app/myBotNft/components/SearchInput'
+import AppList from '@/app/myBotNft/components/AppList'
 import Welcome from "@/app/components/home/welcome/welcome";
+
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import dynamic from 'next/dynamic';
 
 const DynamicBrowserRouter = dynamic(
@@ -36,7 +38,7 @@ export default function Market() {
                         <div />
                     </div>
                     <DynamicBrowserRouter>
-                        <AppListLoading />
+                        <AppList />
                     </DynamicBrowserRouter>
                     </div>
                 </div>

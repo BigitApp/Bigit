@@ -7,10 +7,33 @@ import { Container } from './Container'
 import { NavLink } from './NavLink'
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
-import { ConnectWallet, useConnectionStatus } from '@thirdweb-dev/react'
 
 import logo from '@/public/logo.svg'
 import logoText from "@/public/logoText.svg";
+import { ConnectWallet, useConnectionStatus } from '@thirdweb-dev/react'
+import { lightTheme } from "@thirdweb-dev/react";
+
+
+const customLightTheme = lightTheme({
+  fontFamily: "Inter, sans-serif",
+  colors: {
+    modalBg: "#F2F2F2",
+    accentText: "rgb(47, 147, 22)",
+    // accentButtonBg: "rgb(47, 147, 22)",
+    accentButtonText: "#fdfcfd",
+    primaryButtonBg: "#F2F2F2",
+    borderColor: "#e4e2e4",
+    separatorLine: "#e4e2e4",
+    primaryText: "#1a1523",
+    secondaryText: "#706f78",
+    secondaryButtonBg: "#e9e8ea",
+    connectedButtonBg: "#F2F2F2",
+    connectedButtonBgHover: "#F2F2F2",
+    primaryButtonText: "#1a1523",
+    walletSelectorButtonHoverBg:
+      "#F2F2F2",
+  },
+});
 
 function MobileNavLink({
   href,
@@ -72,7 +95,11 @@ const useHeaders = () => {
         },
         {
           href: '/myBot',
-          label: 'MyBot',
+          label: 'My Bot',
+        },
+        {
+          href: '/myBotNft',
+          label: 'My Bot NFT',
         },
         {
           href: 'https://docs.bigitapp.com/',
@@ -161,11 +188,13 @@ export function Header() {
 
           <div className="flex items-center gap-x-5 md:gap-x-8">
             <div className="flex items-center space-x-8" style={{ height: '80px' }}>
-              <ConnectWallet 
+            <ConnectWallet 
                   className={`${isConnected ? 'border-none bg-black-main text-white' : 'p-2 text-white'}`}
+                  theme={"light"}
                   switchToActiveChain={true}
                   modalSize={"compact"}
-              />
+                  modalTitleIconUrl={""}
+            />
             </div>
             <div className="-mr-1 md:hidden">
               <MobileNavigation />

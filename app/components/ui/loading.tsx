@@ -1,7 +1,23 @@
 import { Loader2 } from "lucide-react";
+import { Cog } from "lucide-react";
+
 
 export function Loading() {
-  return <Loader2 className="h-4 w-4 animate-spin" />;
+  return (
+    <div className="flex items-center justify-center">
+      <Loader2 className="animate-spin" />
+      <span className="ml-2">Loading...</span>
+    </div>
+  );
+}
+
+export function Minting() {
+  return (
+    <div className="flex items-center justify-center">
+      <Cog className="animate-spin text-green-800" />
+      <span className="ml-2 text-green-800 font-bold">Mint...</span>
+    </div>
+  );
 }
 
 export function LoadingPage() {

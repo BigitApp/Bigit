@@ -125,7 +125,6 @@ function Screen() {
   return (
     <main className="flex overflow-hidden h-[85vh] w-screen box-border">
       <>
-        {showSidebarOnMobile && <SideBar />}
         <div className="flex-1 overflow-hidden">
           <Routes>
             <Route path={Path.Chat} element={<ChatPage />} />

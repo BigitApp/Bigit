@@ -136,9 +136,13 @@ const en = {
         SubTitle: "Welcome message sent when starting a new chat",
       },
       Title: "Bot Settings",
+      ModelData: "Model Data",
+    },
+    Mint: {
+      Title: "Mint Your Bot",
+      Price: "Price",
     },
   },
-
   Welcome: {
     Title: "Chat LlamaIndex",
     SubTitle: "Create chat bots that know your data",
