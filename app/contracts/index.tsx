@@ -1,20 +1,20 @@
 import { providers, Contract } from 'ethers'
 import { ethers } from "ethers";
 import BotNFTAbi from './BotNFTABI.json'
-import { Amount } from '@thirdweb-dev/sdk';
+import { BigNumber } from 'ethers';
 import axios from 'axios';
 
 const NFTContractAddress = '0xfb6bbf05aD57F73581cDb68A678f5064FCa99aC8'
 
 interface NFT {
-    price: string;
-    tokenId: number;
+    price: BigNumber;
+    tokenId: BigNumber;
     seller: string;
     owner: string;
     bot: string;
     name: string;
     avatar: string;
-  }
+}
 
 const contractFactory = () => {
     const contracts: { [address: string]: Contract } = {};
@@ -46,7 +46,7 @@ export const loadNFTs = async () => {
     const NFTContract = getContractFn(NFTContractAddress, BotNFTAbi);
     const NFTData = await NFTContract.fetchMarketItems()
 
-    const items = await Promise.all(NFTData.map(async i => {
+    const items = await Promise.all(NFTData.map(async (i: NFT)=> {
         const tokenUri = await NFTContract.tokenURI(i.tokenId)
         const meta = await axios.get(tokenUri)
         const botData = meta.data.bots;
@@ -70,7 +70,7 @@ export const fetchMyNFTs = async () => {
     const NFTContract = getContractFn(NFTContractAddress, BotNFTAbi);
     const NFTData = await NFTContract.fetchMyNFTs()
 
-    const items = await Promise.all(NFTData.map(async i => {
+    const items = await Promise.all(NFTData.map(async (i: NFT) => {
         const tokenUri = await NFTContract.tokenURI(i.tokenId)
         const meta = await axios.get(tokenUri)
         const botData = meta.data.bots;

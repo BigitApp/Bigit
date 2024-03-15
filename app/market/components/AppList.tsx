@@ -1,10 +1,8 @@
-import { FireIcon, PlayIcon } from '@heroicons/react/24/outline';
+import { FireIcon, PlayIcon, CurrencyBangladeshiIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'next-i18next';
 import { BotAvatarLarge } from "@/app/components/ui/emoji";
 import { loadNFTs, buyNFT } from '@/app/contracts/index';
-import Link from 'next/link';
 import { useSetIsWalletModalOpen, useConnectionStatus } from '@thirdweb-dev/react';
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation'
 
@@ -72,13 +70,21 @@ const AppList = () => {
               <div className="bg-white flex items-center justify-center transform hover:scale-110 transition-transform duration-200 cursor-pointer">
                 <BotAvatarLarge avatar={nft.avatar} />
               </div>
-              <h3 className="mt-6 text-sm font-medium text-gray-900">
+              <h3 className="mt-6 text-sm font-bold text-gray-900">
                 {nft.name}
               </h3>
               <dl className="mt-1 flex flex-grow flex-col justify-between">
                 <dt className="sr-only">Title</dt>
                 <dd className="w-full text-center text-sm text-gray-500">
-                  NFT #{nft.tokenId}
+                  BOT #{nft.tokenId}
+                </dd>
+                <dd className="w-full text-center text-sm text-gray-500 flex items-center">
+                  <span>Price: </span>
+                  <CurrencyBangladeshiIcon
+                    className="h-4 w-4 ml-1 text-green-700"
+                    aria-hidden="true"
+                  />
+                  <span>{nft.price}</span>
                 </dd>
               </dl>
             </div>
