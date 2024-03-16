@@ -24,7 +24,7 @@ export const DEMO_BOTS: DemoBot[] = [
     modelConfig: {
       model: "gpt-3.5-turbo",
       temperature: 0.1,
-      maxTokens: 4096,
+      maxTokens: 512,
       sendMemory: true,
     },
     readOnly: false,
@@ -44,7 +44,7 @@ export const DEMO_BOTS: DemoBot[] = [
     modelConfig: {
       model: "gpt-3.5-turbo",
       temperature: 0.1,
-      maxTokens: 4096,
+      maxTokens: 512,
       sendMemory: true,
     },
     readOnly: false,
@@ -64,7 +64,7 @@ export const DEMO_BOTS: DemoBot[] = [
     modelConfig: {
       model: "gpt-3.5-turbo",
       temperature: 0.1,
-      maxTokens: 4096,
+      maxTokens: 512,
       sendMemory: true,
     },
     readOnly: false,
@@ -88,9 +88,9 @@ export const createEmptyBot = (): Bot => ({
   name: Locale.Store.DefaultBotName,
   context: [],
   modelConfig: {
-    model: "gpt-4-1106-preview" as ModelType,
+    model: "gpt-3.5-turbo" as ModelType,
     temperature: 0.5,
-    maxTokens: 4096,
+    maxTokens: 512,
     sendMemory: true,
   },
   readOnly: false,

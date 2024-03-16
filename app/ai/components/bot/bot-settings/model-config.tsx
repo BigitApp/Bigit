@@ -34,7 +34,7 @@ const ModalConfigValidator = {
     return x as ModelType;
   },
   maxTokens(x: number) {
-    return limitNumber(x, 0, 4096, 2000);
+    return limitNumber(x, 0, 512, 100);
   },
   temperature(x: number) {
     return limitNumber(x, 0, 1, 1);
