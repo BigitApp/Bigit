@@ -4,7 +4,7 @@ import BotNFTAbi from './BotNFTABI.json'
 import { BigNumber } from 'ethers';
 import axios from 'axios';
 
-const NFTContractAddress = '0xfb6bbf05aD57F73581cDb68A678f5064FCa99aC8'
+const NFTContractAddress = '0x4bb3F7718831149C875FC64E6D8Ee852b7CbE74f'
 
 interface NFT {
     price: BigNumber;
