@@ -5,17 +5,24 @@ import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function AiPage() {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
+  const [searchParams] = useSearchParams(); 
+  const [tokenId, setTokenId] = useState<number | undefined>(undefined); 
 
   useEffect(() => {
     document.title = "Bigit丨AiPage";
-    setIsLoading(false);
+    const getId = parseInt(searchParams[1])
+    setTokenId(getId)
+  }, []);
+
+  useEffect(() => {
+    document.title = "Bigit丨AiPage";
   }, []);
 
 
   return (
     <>
-      <AI />
+      {tokenId !== undefined && <AI tokenId={tokenId} />}
     </>
   );
 }
+

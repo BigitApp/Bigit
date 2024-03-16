@@ -58,6 +58,10 @@ const AppList = () => {
   };
 
   const handleRun = (tokenId: number) => {
+    if (!isConnected) {
+      setIsWalletModalOpen(true);
+      return;
+    }
     router.push(`/aiPage?tokenId=${tokenId}`)
   };
 

@@ -76,6 +76,18 @@ export const loadNFTs = async () => {
     return items
 };
 
+export const loadBot = async (id: number | undefined) => {
+    const NFTContract = getContractFn(NFTContractAddress, BotNFTAbi);
+    const tokenUri = await NFTContract.tokenURI(id)
+    const metaData = await axios.get(tokenUri)
+    console.log(metaData.data)
+    // const botData = meta.data.bots;
+    // const firstKey = Object.keys(botData)[0];
+    // const firstBotValue = botData[firstKey];
+
+    return metaData.data
+};
+
 export const fetchMyNFTs = async () => {
     const NFTContract = getContractFn(NFTContractAddress, BotNFTAbi);
     const NFTData = await NFTContract.fetchMyNFTs()
