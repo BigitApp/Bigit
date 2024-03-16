@@ -1,6 +1,6 @@
 import { Loader2 } from "lucide-react";
 import { Cog } from "lucide-react";
-
+import { CreditCard } from "lucide-react";
 
 export function Loading() {
   return (
@@ -23,7 +23,7 @@ export function Minting() {
 export function Buying() {
   return (
     <div className="flex items-center justify-center">
-      <Cog className="animate-spin text-green-800" />
+      <CreditCard className="animate-spin text-green-800" />
       <span className="ml-2 text-green-800 font-bold">Buy...</span>
     </div>
   );

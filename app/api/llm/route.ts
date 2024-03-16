@@ -134,12 +134,6 @@ export async function POST(request: NextRequest) {
       datasource,
       config,
       embeddings,
-    }: {
-      message: MessageContent;
-      chatHistory: ChatMessage[];
-      datasource: string | undefined;
-      config: LLMConfig;
-      embeddings: Embedding[] | undefined;
     } = body;
     if (!message || !messages || !config) {
       return NextResponse.json(
@@ -151,6 +145,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // model generate
     const llm = new OpenAI({
       model: config.model,
       temperature: config.temperature,
@@ -175,17 +170,12 @@ export async function POST(request: NextRequest) {
       ? new SummaryChatHistory({ llm, messages })
       : new SimpleChatHistory({ messages });
     console.log("[LlamaIndex] chatEngine", chatEngine);
-    const stream = await chatEngine.chat(message, chatHistory, true);
-    const readableStream = createReadableStream(stream, chatHistory);
-    console.log("[LlamaIndex] Response stream", readableStream);
-    return new NextResponse(readableStream, {
-      headers: {
-        "Content-Type": "text/event-stream",
-        Connection: "keep-alive",
-        "Cache-Control": "no-cache, no-transform",
-      },
-    });
-    
+
+    // Assuming chatEngine.chat returns a Promise that resolves with the final result
+    const chatResult = await chatEngine.chat(message, chatHistory, false); // Set streaming to false
+    console.log("[LlamaIndex] Chat result", chatResult);
+
+    return NextResponse.json(chatResult, { status: 200 });
   } catch (error) {
     console.error("[LlamaIndex]", error);
     return NextResponse.json(
