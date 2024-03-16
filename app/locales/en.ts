@@ -137,6 +137,7 @@ const en = {
       },
       Title: "Bot Settings",
       ModelData: "Model Data",
+      History: "Chat History",
     },
     Mint: {
       Title: "Mint Your Bot",
