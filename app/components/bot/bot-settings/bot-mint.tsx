@@ -11,6 +11,7 @@ export default function BotMint() {
   const botStore = useBotStore();
   const [showPicker, setShowPicker] = useState(false);
   const currentBot = botStore.currentBot();
+  console.log(currentBot)
 
   return (
     <>
@@ -44,10 +45,10 @@ export default function BotMint() {
               value={currentBot.botHello || ""}
             />
           </ConfigItem>
-          <ConfigItem title={Locale.Bot.Config.Name}>
+          <ConfigItem title={Locale.Bot.Config.History}>
             <Input
               type="text"
-              value={JSON.stringify(currentBot.context)}
+              value={JSON.stringify(currentBot.session)}
             />
           </ConfigItem>
         </CardContent>

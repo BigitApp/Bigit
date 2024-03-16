@@ -1,18 +1,13 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useMobileScreen } from "@/app/utils/mobile";
-
 import dynamic from "next/dynamic";
 import { Path } from "@/app/constant";
 import { ErrorBoundary } from "@/app/ai/components/layout/error";
-import { readFromFile } from "@/app/utils/download";
-import Locale from "@/app/locales";
-import { useToast } from "@/app/components/ui/use-toast";
-
-import { Button} from "@/app/components/ui/button";
+import { loadBot } from '@/app/contracts/index'
+import { SideBar } from "@/app/ai/components/layout/sidebar";
 
 import {
   Route,
@@ -21,20 +16,12 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { Bot, useBotStore2 } from "@/app/ai/store/bot";
-import { SideBar } from "@/app/ai/components/layout/sidebar";
 import { LoadingPage } from "@/app/components/ui/loading";
 import { Loader2 } from "lucide-react";
 
 export function Loading() {
   return <Loader2 className="h-4 w-4 animate-spin" />;
 }
-
-const SettingsPage = dynamic(
-  async () => (await import("@/app/ai/components/settings")).Settings,
-  {
-    loading: () => <LoadingPage />,
-  },
-);
 
 const ChatPage = dynamic(async () => (await import("@/app/ai/components/chat/chat")).Chat, {
   loading: () => <LoadingPage />,
@@ -59,35 +46,35 @@ const loadAsyncGoogleFont = () => {
   document.head.appendChild(linkEl);
 };
 
-
-function withBot(Component: React.FunctionComponent, bot?: Bot) {
+function withBot(Component: React.FunctionComponent, tokenId?: number) {
   return function WithBotComponent() {
-    console.log('WithBotComponent rendered');
-    const [botInitialized, setBotInitialized] = useState(false);
-    const navigate = useNavigate();
     const botStore = useBotStore2();
+    const [botInitialized, setBotInitialized] = useState(false);
+    useEffect(() => {
+      const loadBotData = async () => {
+        try {
+          const botData = await loadBot(tokenId);
+          botStore.restore(botData);
+          setBotInitialized(true);
+        } catch (error) {
+          console.error("Error loading bot data:", error);
+        }
+      };
 
-    const handleButtonClick = async () => {
-      const content = await readFromFile();
-      const importBots = JSON.parse(content);
-      console.log(importBots);
-      botStore.restore(importBots);
-      setBotInitialized(true);
-    };
+      loadBotData();
+    }, [tokenId]);
 
     if (botInitialized) {
       return <Component />;
     } else {
       return (
         <div className="w-full h-screen max-h-full flex items-center justify-center text-sm text-muted-foreground">
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          <Button variant="default" className="h-8 w-32 p-0" onClick={handleButtonClick}>Choose File</Button>
+          <Loader2 className="h-4 w-4 animate-spin" />
         </div>
       );
     }
   };
 }
-
 const SidebarContext = React.createContext<{
   showSidebar: boolean;
   setShowSidebar: (show: boolean) => void;
@@ -125,10 +112,10 @@ function Screen() {
   return (
     <main className="flex overflow-hidden h-[85vh] w-screen box-border">
       <>
+        {/* {showSidebarOnMobile && <SideBar />} */}
         <div className="flex-1 overflow-hidden">
           <Routes>
             <Route path={Path.Chat} element={<ChatPage />} />
-            <Route path={Path.Settings} element={<SettingsPage />} />
           </Routes>
         </div>
       </>
@@ -136,22 +123,20 @@ function Screen() {
   );
 }
 
-export function AI({ bot }: { bot?: Bot }) {
+export function AI({ tokenId }: { tokenId?: number }) {
   if (!useHasHydrated()) {
     return <LoadingPage />;
   }
 
-  const BotScreen = withBot(Screen, bot);
+  const BotScreen = withBot(Screen, tokenId);
   const queryClient = new QueryClient();
 
   return (
     <ErrorBoundary>
       <Router>
-        <QueryClientProvider client={queryClient}>
-          <SidebarContextProvider>
-            <BotScreen />
-          </SidebarContextProvider>
-        </QueryClientProvider>
+        <SidebarContextProvider>
+          <BotScreen />
+        </SidebarContextProvider>
       </Router>
     </ErrorBoundary>
   );
