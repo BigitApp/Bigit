@@ -30,11 +30,10 @@ const AppList = () => {
         const allData = await fetchMyNFTs();
         console.log(allData)
         setmyNfts(allData);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching NFTs:', error);
-      } finally {
-        setIsLoading(false);
-      }
+      } 
     };
     fetchData();
   }, []);

@@ -34,10 +34,9 @@ const AppList = () => {
         setIsLoading(true);
         const allData = await loadNFTs();
         setNfts(allData);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching NFTs:', error);
-      } finally {
-        setIsLoading(false);
       }
     };
     fetchData();
@@ -113,9 +112,9 @@ const AppList = () => {
                   </div>
                 )}
                 { isBuying && ( 
-                    <div className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg  py-4 text-sm font-semibold text-gray-900 cursor-pointer transform hover:scale-110 transition-transform duration-200" >
+                  <div className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg  py-4 text-sm font-semibold text-gray-900 cursor-pointer transform hover:scale-110 transition-transform duration-200" >
                       <Buying /> 
-                    </div>
+                  </div>
                 )}
               </div>
               <div className="-ml-px flex w-0 flex-1">

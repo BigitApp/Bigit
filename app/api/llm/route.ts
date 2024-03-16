@@ -151,6 +151,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // model generate
     const llm = new OpenAI({
       model: config.model,
       temperature: config.temperature,
@@ -202,4 +203,4 @@ export async function POST(request: NextRequest) {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 // Set max running time of function, for Vercel Hobby use 10 seconds, see https://vercel.com/docs/functions/serverless-functions/runtimes#maxduration
-export const maxDuration = 10;
+export const maxDuration = 60;
