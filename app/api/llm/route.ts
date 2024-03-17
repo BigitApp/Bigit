@@ -153,7 +153,7 @@ export async function POST(request: NextRequest) {
 
     // model generate
     const llm = new OpenAI({
-      model: config.model,
+      model: "gpt-3.5-turbo",
       temperature: config.temperature,
       topP: config.topP,
       maxTokens: config.maxTokens,
