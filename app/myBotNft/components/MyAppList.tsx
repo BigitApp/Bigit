@@ -1,12 +1,12 @@
-import { FireIcon, PlayIcon, CurrencyBangladeshiIcon } from '@heroicons/react/24/outline';
+import { PlayIcon, CurrencyBangladeshiIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'next-i18next';
 import { BotAvatarLarge } from "@/app/components/ui/emoji";
 import { fetchMyNFTs, buyNFT } from '@/app/contracts/index';
-import Link from 'next/link';
 import { useSetIsWalletModalOpen, useConnectionStatus } from '@thirdweb-dev/react';
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import AppListLoading from '@/app/market/components/AppListLoading'
+import { useRouter } from 'next/navigation';
+import { SearchInput } from '@/app/market/components/SearchInput'
 
 interface NFT {
   price: string;
@@ -19,16 +19,22 @@ interface NFT {
 }
 
 
-const AppList = () => {
+const MyAppList = () => {
   const [myNfts, setmyNfts] = useState<NFT[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  
+  const router = useRouter();
+  const setIsWalletModalOpen = useSetIsWalletModalOpen();
+  const status = useConnectionStatus();
+  const isConnected = status === 'connected';
+  const { t } = useTranslation('common');
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredNFTs, setFilteredNFTs] = useState<NFT[]>([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
         const allData = await fetchMyNFTs();
-        console.log(allData)
         setmyNfts(allData);
         setIsLoading(false);
       } catch (error) {
@@ -38,36 +44,40 @@ const AppList = () => {
     fetchData();
   }, []);
 
-  const setIsWalletModalOpen = useSetIsWalletModalOpen();
-  const status = useConnectionStatus();
-  const isConnected = status === 'connected';
-  const { t } = useTranslation('common');
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (searchValue) {
+      const filtered = myNfts.filter(myNfts =>
+        myNfts.name.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      setFilteredNFTs(filtered);
+    } else {
+      setFilteredNFTs(myNfts);
+    }
+  }, [searchValue, myNfts]);
 
-  const handleBuy = async (nft: NFT) => {
+  const handleRun = (tokenId: number) => {
     if (!isConnected) {
       setIsWalletModalOpen(true);
       return;
     }
-    try {
-      buyNFT(nft)
-    } catch (error) {
-      console.error('Error during purchase:', error);
-    }
+    router.push(`/aiPage?tokenId=${tokenId}`)
   };
 
-  const handleRun = async () => {   
-    navigate('aiPage');
-  }
 
   return (
     <div style={{ marginBottom: '1rem' }}>
+      <div className="mb-4">
+        <SearchInput
+          setSearchValue={setSearchValue}
+          placeholder="Search AI Assistant..."
+        />
+      </div>
     { isLoading && <AppListLoading />}
     <ul
       role="list"
       className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
     >
-      {myNfts.map((nft, idx) => (
+      {filteredNFTs.map((nft, idx) => (
         <li
           key={idx}
           className="col-span-1 flex flex-col justify-between divide-y rounded-lg text-center shadow-lg border bg-opacity-20 cursor-pointer transform hover:scale-105 transition-transform duration-200"
@@ -99,25 +109,14 @@ const AppList = () => {
 
           <div>
             <div className="-mt-px flex divide-x">
-              <div className="flex w-0 flex-1">
-                <div className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg  py-4 text-sm font-semibold text-gray-900 cursor-pointer transform hover:scale-110 transition-transform duration-200" 
-                  onClick={() => handleBuy(nft)}>
-                  <FireIcon
-                    className="h-5 w-5 text-green-700"
-                    aria-hidden="true"
-                  />
-                  {t('Buy Now')}
-                </div>
-              </div>
               <div className="-ml-px flex w-0 flex-1">
-                <div className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg py-4 text-sm font-semibold text-gray-900 cursor-pointer transform hover:scale-110 transition-transform duration-200">
-                  <Link href={`/market/aiPage`}>
+                <div className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg py-4 text-sm font-semibold text-gray-900 cursor-pointer transform hover:scale-110 transition-transform duration-200"
+                    onClick={() => handleRun(nft.tokenId)}>
                     <PlayIcon
                       className="h-5 w-5 text-green-700 mr-2.5"
                       aria-hidden="true"
                     />
                     {t('Run')}
-                  </Link>
                 </div>
               </div>
             </div>
@@ -129,4 +128,4 @@ const AppList = () => {
   )
 }
 
-export default AppList;
+export default MyAppList;
