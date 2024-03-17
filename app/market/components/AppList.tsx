@@ -80,7 +80,7 @@ const AppList = () => {
   };
 
   return (
-    <div style={{ marginBottom: '1rem' }}>
+    <div className="px-4" style={{ marginBottom: '1rem', height: 'calc(100vh - 200px)', overflowY: 'auto' }}>
       <div className="mb-4">
         <SearchInput
           setSearchValue={setSearchValue}
