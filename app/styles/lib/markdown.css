@@ -869,6 +869,7 @@
 }
 
 .markdown-body a {
-  color: hsl(var(--primary-foreground));
+  color: var(--color-prettylights-syntax-entity-tag);
+  /* color: blue; */
   text-decoration: underline;
 }

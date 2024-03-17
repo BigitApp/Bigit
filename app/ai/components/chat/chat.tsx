@@ -21,7 +21,7 @@ import { prettyObject } from "@/app/utils/format";
 import { useMobileScreen } from "@/app/utils/mobile";
 import { Separator } from "@/app/components/ui/separator";
 import { ChatAction } from "./chat-action";
-import ChatHeader from "./chat-header";
+import ChatHeaderTry from "../chat-try/chat-header-try";
 import ChatInput from "./chat-input";
 import { ClearContextDivider } from "./clear-context-divider";
 import { isImageFileType } from "@/app/client/fetch/file";
@@ -202,7 +202,7 @@ export function Chat() {
 
   return (
     <div className="flex flex-col relative h-full" key={bot.id}>
-      <ChatHeader />
+      <ChatHeaderTry />
       <ScrollArea
         className="flex-1 overflow-auto overflow-x-hidden relative overscroll-none pb-10 p-5"
         ref={scrollRef}

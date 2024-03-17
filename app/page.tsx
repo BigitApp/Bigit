@@ -14,15 +14,15 @@ export default function App() {
   }, []);
 
 
-  if (isLoading) {
-    return (
-      <>
-        <Hero />
-        <Features />
-        <Welcome showWelcomeScreen={setShowWelcomeScreen} />
-      </>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <>
+  //       <Hero />
+  //       <Features />
+  //       <Welcome showWelcomeScreen={setShowWelcomeScreen} />
+  //     </>
+  //   );
+  // }
 
   return (
     <>

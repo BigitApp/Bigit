@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import AppListLoading from '@/app/market/components/AppListLoading'
 import { useRouter } from 'next/navigation';
 import { SearchInput } from '@/app/market/components/SearchInput'
+import ETH from '@/public/token/ETH.svg';
+import Image from 'next/image'
 
 interface NFT {
   price: string;
@@ -87,20 +89,20 @@ const MyAppList = () => {
               <div className="bg-white flex items-center justify-center transform hover:scale-110 transition-transform duration-200 cursor-pointer">
                 <BotAvatarLarge avatar={nft.avatar} />
               </div>
-              <h3 className="mt-6 text-sm font-bold text-gray-900">
+              <h3 className="mt-6 text-sm font-bold text-gray-900 mb-2">
                 {nft.name}
               </h3>
               <dl className="mt-1 flex flex-grow flex-col justify-between">
-                <dt className="sr-only">Title</dt>
-                <dd className="w-full text-center text-sm text-gray-500">
+                <dd className="w-full text-center text-sm text-gray-500 mb-1">
                   BOT #{nft.tokenId}
                 </dd>
                 <dd className="w-full text-center text-sm text-gray-500 flex items-center">
                   <span>Price: </span>
-                  <CurrencyBangladeshiIcon
-                    className="h-4 w-4 ml-1 text-green-700"
-                    aria-hidden="true"
-                  />
+                    <Image
+                      src={ETH}
+                      alt="ETH"
+                      className="h-4 w-4 ml-1 mr-1 text-green-700"
+                    />
                   <span>{nft.price}</span>
                 </dd>
               </dl>
@@ -113,7 +115,7 @@ const MyAppList = () => {
                 <div className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg py-4 text-sm font-semibold text-gray-900 cursor-pointer transform hover:scale-110 transition-transform duration-200"
                     onClick={() => handleRun(nft.tokenId)}>
                     <PlayIcon
-                      className="h-5 w-5 text-green-700 mr-2.5"
+                      className="h-5 w-5 text-green-700"
                       aria-hidden="true"
                     />
                     {t('Run')}

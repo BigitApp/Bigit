@@ -7,7 +7,6 @@ import dynamic from "next/dynamic";
 import { Path } from "@/app/constant";
 import { ErrorBoundary } from "@/app/ai/components/layout/error";
 import { loadBot } from '@/app/contracts/index'
-import { SideBar } from "@/app/ai/components/layout/sidebar";
 
 import {
   Route,

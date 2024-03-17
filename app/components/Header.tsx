@@ -13,28 +13,6 @@ import logoText from "@/public/logoText.svg";
 import { ConnectWallet, useConnectionStatus } from '@thirdweb-dev/react'
 import { lightTheme } from "@thirdweb-dev/react";
 
-
-const customLightTheme = lightTheme({
-  fontFamily: "Inter, sans-serif",
-  colors: {
-    modalBg: "#F2F2F2",
-    accentText: "rgb(47, 147, 22)",
-    // accentButtonBg: "rgb(47, 147, 22)",
-    accentButtonText: "#fdfcfd",
-    primaryButtonBg: "#F2F2F2",
-    borderColor: "#e4e2e4",
-    separatorLine: "#e4e2e4",
-    primaryText: "#1a1523",
-    secondaryText: "#706f78",
-    secondaryButtonBg: "#e9e8ea",
-    connectedButtonBg: "#F2F2F2",
-    connectedButtonBgHover: "#F2F2F2",
-    primaryButtonText: "#1a1523",
-    walletSelectorButtonHoverBg:
-      "#F2F2F2",
-  },
-});
-
 function MobileNavLink({
   href,
   target,
