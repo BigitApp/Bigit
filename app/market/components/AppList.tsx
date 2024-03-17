@@ -6,7 +6,8 @@ import { useSetIsWalletModalOpen, useConnectionStatus } from '@thirdweb-dev/reac
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Buying } from "@/app/components/ui/loading";
-import AppListLoading from '@/app/market/components/AppListLoading'
+import AppListLoading from '@/app/market/components/AppListLoading';
+import { SearchInput } from '@/app/market/components/SearchInput'
 
 interface NFT {
   price: string;
@@ -27,6 +28,8 @@ const AppList = () => {
   const status = useConnectionStatus();
   const isConnected = status === 'connected';
   const { t } = useTranslation('common');
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredNFTs, setFilteredNFTs] = useState<NFT[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +44,17 @@ const AppList = () => {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (searchValue) {
+      const filtered = nfts.filter(nft =>
+        nft.name.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      setFilteredNFTs(filtered);
+    } else {
+      setFilteredNFTs(nfts);
+    }
+  }, [searchValue, nfts]);
 
   const handleBuy = async (nft: NFT) => {
     if (!isConnected) {
@@ -67,12 +81,18 @@ const AppList = () => {
 
   return (
     <div style={{ marginBottom: '1rem' }}>
+      <div className="mb-4">
+        <SearchInput
+          setSearchValue={setSearchValue}
+          placeholder="Search AI Assistant..."
+        />
+      </div>
       { isLoading && <AppListLoading />}
     <ul
       role="list"
       className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
     >
-      {nfts.map((nft, idx) => (
+      {filteredNFTs.map((nft, idx) => (
         <li
           key={idx}
           className="col-span-1 flex flex-col justify-between divide-y rounded-lg text-center shadow-lg border bg-opacity-20 cursor-pointer transform hover:scale-105 transition-transform duration-200"

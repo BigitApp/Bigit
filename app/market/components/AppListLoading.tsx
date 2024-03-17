@@ -1,11 +1,14 @@
 import { FireIcon, PlayIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'next-i18next'
+import { SearchInput } from '@/app/market/components/SearchInput'
+import { useState } from 'react';
 
 const AppListLoading = () => {
-  // @ts-ignore
   const { t } = useTranslation('common')
+  const [searchValue, setSearchValue] = useState('');
 
   return (
+    <div style={{ marginBottom: '1rem' }}>
     <ul
       role="list"
       className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
@@ -56,6 +59,7 @@ const AppListLoading = () => {
         </li>
       ))}
     </ul>
+  </div>
   )
 }
 
