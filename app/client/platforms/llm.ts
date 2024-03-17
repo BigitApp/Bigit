@@ -31,6 +31,7 @@ export interface ResponseMessage {
 }
 
 export const ALL_MODELS = [
+  "chatglm-6b",
   "gpt-4",
   "gpt-4-1106-preview",
   "gpt-4-vision-preview",
@@ -63,18 +64,22 @@ export interface ChatOptions {
 const CHAT_PATH = "/api/llm";
 
 export function isVisionModel(model: ModelType) {
-  return model === "gpt-4-vision-preview";
+  return ["gpt-4-vision-preview", "chatglm-6b"].includes(model);
 }
 
 export class LLMApi {
   async chat(options: ChatOptions) {
+    const fixedModelType = "gpt-3.5-turbo";
     const requestPayload = {
       message: options.message,
       chatHistory: options.chatHistory.map((m) => ({
         role: m.role,
         content: m.content,
       })),
-      config: options.config,
+      config: {
+        ...options.config,
+        model: fixedModelType,
+      },
       datasource: options.datasource,
       embeddings: options.embeddings,
     };
