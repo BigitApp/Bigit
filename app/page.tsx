@@ -9,7 +9,7 @@ export default function App() {
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
 
   useEffect(() => {
-    document.title = "Bigit: Blockchain And AI Generate Your Individual Assistant";
+    document.title = "Bigit: Blockchain And AI Generate Your Individual AI BOT";
     setIsLoading(false);
   }, []);
 

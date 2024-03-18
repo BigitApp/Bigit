@@ -11,7 +11,7 @@
   <h1 align="center">Bigit </h1>
 
   <p align="center">
-     Blockchain And AI Generate Your Individual Assistant
+     Blockchain And AI Generate Your Individual AI BOT
     <br />
     <a href="https://github.com/AAooWW/Bigit"><strong>Explore in github »</strong></a>
     <br />
