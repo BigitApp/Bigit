@@ -5,7 +5,8 @@ import { ModelType } from "@/app/client/platforms/llm";
 import { createEmptySession } from "../store";
 
 const TEMPLATE = (PERSONA: string) =>
-  `I want you to act as a ${PERSONA}. I will provide you with the context needed to solve my problem. Use intelligent, simple, and understandable language. Be concise. It is helpful to explain your thoughts step by step and with bullet points.`;
+  `
+  我希望你扮演一个${PERSONA}的角色。我会提供你需要的背景信息来解决我的问题。使用智能、简单且易于理解的语言。请保持简洁。逐步解释你的想法，并使用项目符号来阐述会非常有帮助。`;
 
 type DemoBot = Omit<Bot, "session">;
 
@@ -20,6 +21,10 @@ export const DEMO_BOTS: DemoBot[] = [
         role: "system",
         content: TEMPLATE("Bigit项目机器人"),
       },
+      {
+        role: "system",
+        content: 'Bigit项目是一个创新的应用，它首次将区块链技术与本地大模型融合，实现了真正的属于自己的AI助手，并赋予了价值属性。项目的技术实现主要依赖于Python后端，以更好地将BigDL融入主流框架。bigit的官网是：https://www.bigitapp.com/',
+      }
     ],
     modelConfig: {
       model: "gpt-3.5-turbo",
@@ -28,7 +33,7 @@ export const DEMO_BOTS: DemoBot[] = [
       sendMemory: true,
     },
     readOnly: false,
-    hideContext: false,
+    hideContext: true,
   },
   {
     id: "2",
@@ -48,7 +53,7 @@ export const DEMO_BOTS: DemoBot[] = [
       sendMemory: true,
     },
     readOnly: false,
-    hideContext: false,
+    hideContext: true,
   },
   {
     id: "3",
@@ -68,7 +73,7 @@ export const DEMO_BOTS: DemoBot[] = [
       sendMemory: true,
     },
     readOnly: false,
-    hideContext: false,
+    hideContext: true,
   },
 ];
 
