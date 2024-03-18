@@ -71,7 +71,7 @@ const MyAppList = () => {
       <div className="mb-4">
         <SearchInput
           setSearchValue={setSearchValue}
-          placeholder="Search AI Assistant..."
+          placeholder="Search AI BOT..."
         />
       </div>
     { isLoading && <AppListLoading />}

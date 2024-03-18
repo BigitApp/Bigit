@@ -13,7 +13,7 @@ const Typewriter = () => {
             .typeString(
               `<span style="color: #fd222a: pixeloid-mono; font-size: ${
                 largeScreenFlag ? '24px' : '16px'
-              }">Create AI assistants that know you</span>`
+              }">Create AI BOT that know you</span>`
             )
             .start()
         }}
