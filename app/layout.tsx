@@ -8,7 +8,8 @@ import Footer from "./components/Footer";
 import { Toaster } from "@/app/components/ui/toaster";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import {Sepolia} from '@thirdweb-dev/chains'
+import { Sepolia, BitlayerTestnet } from '@thirdweb-dev/chains'
+import { defineChain } from "thirdweb";
 
 import {
   ThirdwebProvider,
@@ -32,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
   <ThirdwebProvider
-    supportedChains={[Sepolia]}
+    supportedChains={[Sepolia, BitlayerTestnet, ]}
     activeChain={Sepolia}
     clientId="758c04f9bf0da56dc07ff4c7e6d18b83"
     supportedWallets={[
