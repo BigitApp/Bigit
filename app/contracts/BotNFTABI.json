@@ -357,7 +357,7 @@
                         "type": "bool"
                     }
                 ],
-                "internalType": "struct BotNFT.MarketItem[]",
+                "internalType": "struct BigitBotNFT.MarketItem[]",
                 "name": "",
                 "type": "tuple[]"
             }
@@ -397,7 +397,7 @@
                         "type": "bool"
                     }
                 ],
-                "internalType": "struct BotNFT.MarketItem[]",
+                "internalType": "struct BigitBotNFT.MarketItem[]",
                 "name": "",
                 "type": "tuple[]"
             }
@@ -437,7 +437,7 @@
                         "type": "bool"
                     }
                 ],
-                "internalType": "struct BotNFT.MarketItem[]",
+                "internalType": "struct BigitBotNFT.MarketItem[]",
                 "name": "",
                 "type": "tuple[]"
             }

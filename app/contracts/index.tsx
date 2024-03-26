@@ -5,10 +5,10 @@ import { BigNumber } from 'ethers';
 import axios from 'axios';
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 
-const readSdk = new ThirdwebSDK("Sepolia");
+// const readSdk = new ThirdwebSDK("Sepolia");
 
 
-const NFTContractAddress = '0x4bb3F7718831149C875FC64E6D8Ee852b7CbE74f'
+const NFTContractAddress = '0xc2B18b5fe2053e85fe80b73657EaB60D042e07f9'
 
 interface NFT {
     price: BigNumber;
@@ -58,10 +58,10 @@ export const createToken = async (url: string, price: string) => {
 
 export const loadNFTs = async () => {
     const NFTContract = getContractFn(NFTContractAddress, BotNFTAbi);
-    // const NFTData = await NFTContract.fetchMarketItems()
+    const NFTData = await NFTContract.fetchMarketItems()
 
-    const contract = await readSdk.getContract(NFTContractAddress, BotNFTAbi);
-    const NFTData = await contract.call("fetchMarketItems");
+    // const contract = await readSdk.getContract(NFTContractAddress, BotNFTAbi);
+    // const NFTData = await contract.call("fetchMarketItems");
 
     const items = await Promise.all(NFTData.map(async (i: NFT)=> {
         const tokenUri = await NFTContract.tokenURI(i.tokenId)
