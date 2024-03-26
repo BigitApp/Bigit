@@ -33,8 +33,8 @@ export default function RootLayout({
 }) {
   return (
   <ThirdwebProvider
-    supportedChains={[Sepolia, BitlayerTestnet, ]}
-    activeChain={Sepolia}
+    supportedChains={[BitlayerTestnet]}
+    activeChain={BitlayerTestnet}
     clientId="758c04f9bf0da56dc07ff4c7e6d18b83"
     supportedWallets={[
       metamaskWallet({ recommended: true }),
