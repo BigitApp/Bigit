@@ -71,8 +71,9 @@ export default function MintBotDialogContent() {
         <BotMint />
         <ConfigItem title={Locale.Bot.Mint.Price}>
           <Input
-            placeholder="Price in Eth"
+            placeholder="Price in BTC"
             type="text"
+            className="border-2 border-green-600 bg-gray-200 rounded-md shadow-md focus:ring-2 focus:ring-green-600 focus:border-green-600"
             onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
           />
         </ConfigItem>

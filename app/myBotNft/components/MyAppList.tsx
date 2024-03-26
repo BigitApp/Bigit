@@ -8,6 +8,7 @@ import AppListLoading from '@/app/market/components/AppListLoading'
 import { useRouter } from 'next/navigation';
 import { SearchInput } from '@/app/market/components/SearchInput'
 import ETH from '@/public/token/ETH.svg';
+import bitlayer from '@/public/token/bitlayer.png';
 import Image from 'next/image'
 
 interface NFT {
@@ -96,10 +97,10 @@ const MyAppList = () => {
                 <dd className="w-full text-center text-sm text-gray-500 mb-1">
                   BOT #{nft.tokenId}
                 </dd>
-                <dd className="w-full text-center text-sm text-gray-500 flex items-center">
+                <dd className="w-full text-center text-sm text-gray-500 flex items-center font-bold">
                   <span>Price: </span>
                     <Image
-                      src={ETH}
+                      src={bitlayer}
                       alt="ETH"
                       className="h-4 w-4 ml-1 mr-1 text-green-700"
                     />
