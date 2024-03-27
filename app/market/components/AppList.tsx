@@ -14,10 +14,9 @@ import Image from 'next/image'
 
 interface NFT {
   price: string;
-  tokenId: number;
+  tokenId: any;
   seller: string;
   owner: string;
-  bot: string;
   name: string;
   avatar: string;
 }
