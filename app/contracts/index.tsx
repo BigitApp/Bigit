@@ -3,11 +3,9 @@ import { ethers } from "ethers";
 import BotNFTAbi from './BotNFTABI.json'
 import { BigNumber } from 'ethers';
 import axios from 'axios';
-import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+import { Web3 } from 'web3';
 
-// const readSdk = new ThirdwebSDK("Sepolia");
-
-
+const web3 = new Web3('https://testnet-rpc.bitlayer.org');
 const NFTContractAddress = '0xc2B18b5fe2053e85fe80b73657EaB60D042e07f9'
 
 interface NFT {
@@ -15,7 +13,6 @@ interface NFT {
     tokenId: BigNumber;
     seller: string;
     owner: string;
-    bot: string;
     name: string;
     avatar: string;
 }
@@ -25,7 +22,6 @@ interface NFTList {
     tokenId: number;
     seller: string;
     owner: string;
-    bot: string;
     name: string;
     avatar: string;
   }
@@ -57,30 +53,31 @@ export const createToken = async (url: string, price: string) => {
 };
 
 export const loadNFTs = async () => {
-    const NFTContract = getContractFn(NFTContractAddress, BotNFTAbi);
-    const NFTData = await NFTContract.fetchMarketItems()
+    const readNFTContract = new web3.eth.Contract(BotNFTAbi, NFTContractAddress);
+    const NFTData: void | [] | (unknown[] & []) = await readNFTContract.methods.fetchMarketItems().call();
+    if (!Array.isArray(NFTData)) {
+        throw new Error('Expected NFTData to be an array');
+    }
 
-    // const contract = await readSdk.getContract(NFTContractAddress, BotNFTAbi);
-    // const NFTData = await contract.call("fetchMarketItems");
-
-    const items = await Promise.all(NFTData.map(async (i: NFT)=> {
-        const tokenUri = await NFTContract.tokenURI(i.tokenId)
-        const meta = await axios.get(tokenUri)
+    const items = await Promise.all(NFTData.map(async (i: NFT) => {
+        const tokenUri = (await readNFTContract.methods.tokenURI(i.tokenId).call()) as string;
+        const meta = await axios.get(tokenUri);
         const botData = meta.data.bots;
         const firstKey = Object.keys(botData)[0];
         const firstBotValue = botData[firstKey];
-        let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
+        let price = ethers.utils.formatUnits(i.price.toString(), 'ether');
         let item = {
-          price,
-          tokenId: i.tokenId.toNumber(),
-          seller: i.seller,
-          owner: i.owner,
-          name: firstBotValue.name,
-          avatar:firstBotValue.avatar
-        }
-        return item
-    }))
-    return items
+            price,
+            tokenId: Number(i.tokenId),
+            seller: i.seller,
+            owner: i.owner,
+            name: firstBotValue.name,
+            avatar: firstBotValue.avatar
+        };
+        return item;
+    }));
+
+    return items;
 };
 
 export const loadBot = async (id: number | undefined) => {
