@@ -23,7 +23,7 @@ const Features = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-[#eff3f9] to-[#ffffff] via-[rgba(144,238,144,0.2)] sm:pb-20 pb-10">
+    <div className="bg-gradient-to-r from-[#eff3f9] to-[#ffffff] via-[rgba(144,238,144,0.2)] sm:pb-20 pb-10 items-center justify-center">
       <Container>
         <div className={classes.wrapper}>
           {features.map((f, idx) => (
